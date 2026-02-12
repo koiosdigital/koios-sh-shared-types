@@ -7,7 +7,8 @@
 /**
  * Subscription plan tiers
  */
-export type Plan = 'free' | 'pro' | 'enterprise'
+export const PLANS = ['free', 'pro', 'enterprise'] as const
+export type Plan = typeof PLANS[number]
 
 /**
  * Supported currencies
@@ -17,7 +18,8 @@ export type Currency = 'usd'
 /**
  * Billable resource types
  */
-export type BillableResource = 'members' | 'certificate_authorities' | 'devices'
+export const BILLABLE_RESOURCES = ['members', 'certificate_authorities', 'devices'] as const
+export type BillableResource = typeof BILLABLE_RESOURCES[number]
 
 /**
  * Subscription status
