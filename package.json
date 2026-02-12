@@ -1,0 +1,62 @@
+{
+  "name": "@koios/shared-types",
+  "version": "0.1.0",
+  "description": "Shared TypeScript types and Zod schemas for Koios microservices queue communication",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./billable-events": {
+      "import": "./dist/queues/billable-events.js",
+      "types": "./dist/queues/billable-events.d.ts"
+    },
+    "./billing-events": {
+      "import": "./dist/queues/billing-events.js",
+      "types": "./dist/queues/billing-events.d.ts"
+    },
+    "./email-events": {
+      "import": "./dist/queues/email-events.js",
+      "types": "./dist/queues/email-events.d.ts"
+    },
+    "./common": {
+      "import": "./dist/common/types.js",
+      "types": "./dist/common/types.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm run clean && pnpm run build"
+  },
+  "keywords": [
+    "koios",
+    "types",
+    "zod",
+    "cloudflare",
+    "queues",
+    "microservices"
+  ],
+  "author": "Koios Digital",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koiosdigital/koios-sh-shared-types.git"
+  },
+  "peerDependencies": {
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "zod": "^3.22.0"
+  }
+}
