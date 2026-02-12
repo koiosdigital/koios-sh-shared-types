@@ -20,6 +20,13 @@ export type {
 } from './common/types'
 
 // ====================
+// Permissions
+// ====================
+
+export { PERMISSIONS } from './common/permissions'
+export type { PermissionId } from './common/permissions'
+
+// ====================
 // Billable Events (koios-billable-events queue)
 // ====================
 

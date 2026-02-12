@@ -24,7 +24,14 @@ export type BillableResource = typeof BILLABLE_RESOURCES[number]
 /**
  * Subscription status
  */
-export type SubscriptionStatus = 'active' | 'past_due' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'trialing' | 'unpaid'
+export type SubscriptionStatus =
+  | 'active'
+  | 'past_due'
+  | 'canceled'
+  | 'incomplete'
+  | 'incomplete_expired'
+  | 'trialing'
+  | 'unpaid'
 
 /**
  * Tenant status
