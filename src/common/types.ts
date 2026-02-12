@@ -37,9 +37,3 @@ export type SubscriptionStatus =
  * Tenant status
  */
 export type TenantStatus = 'active' | 'suspended' | 'deleted'
-
-/**
- * User role within a tenant (appears in JWT tokens)
- * Alias for DefaultRole - imported from permissions
- */
-export type UserRole = 'owner' | 'admin' | 'member' | 'readonly'

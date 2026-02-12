@@ -140,9 +140,3 @@ export const PERMISSIONS = [
 ] as const
 
 export type PermissionId = (typeof PERMISSIONS)[number]['id']
-
-/**
- * Default tenant roles (appear in JWT tokens)
- */
-export const DEFAULT_ROLES = ['owner', 'admin', 'member', 'readonly'] as const
-export type DefaultRole = (typeof DEFAULT_ROLES)[number]

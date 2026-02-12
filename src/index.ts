@@ -23,8 +23,8 @@ export type {
 // Permissions
 // ====================
 
-export { PERMISSIONS, DEFAULT_ROLES } from './common/permissions'
-export type { PermissionId, DefaultRole } from './common/permissions'
+export { PERMISSIONS } from './common/permissions'
+export type { PermissionId } from './common/permissions'
 
 // ====================
 // Billable Events (koios-billable-events queue)
