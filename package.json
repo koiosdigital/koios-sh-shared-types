@@ -22,6 +22,10 @@
       "import": "./dist/queues/email-events.js",
       "types": "./dist/queues/email-events.d.ts"
     },
+    "./koios-email": {
+      "import": "./dist/queues/koios-email.js",
+      "types": "./dist/queues/koios-email.d.ts"
+    },
     "./common": {
       "import": "./dist/common/types.js",
       "types": "./dist/common/types.d.ts"

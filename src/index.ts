@@ -14,7 +14,6 @@
 export type {
   Plan,
   Currency,
-  UserRole,
   BillableResource,
   SubscriptionStatus,
   TenantStatus
@@ -96,28 +95,15 @@ export type {
 } from './queues/billing-events'
 
 // ====================
-// Email Events (koios-email queue)
+// Koios Email Queue (koios-email queue)
 // ====================
 
-export {
-  // Schemas
-  EmailSendRequestedEventSchema,
-  EmailSentEventSchema,
-  EmailFailedEventSchema,
-  EmailEventSchema,
-
-  // Event Creators
-  createEmailSendRequestedEvent,
-  createEmailSentEvent,
-  createEmailFailedEvent,
-
-  // Parser
-  parseEmailEvent
-} from './queues/email-events'
-
 export type {
-  EmailSendRequestedEvent,
-  EmailSentEvent,
-  EmailFailedEvent,
-  EmailEvent
-} from './queues/email-events'
+  PasswordResetPayload,
+  WelcomePayload,
+  BackupCodesPayload,
+  VerifyEmailPayload,
+  OrganizationInvitePayload,
+  EmailQueueMessage,
+  EmailType
+} from './queues/koios-email'
