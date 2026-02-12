@@ -7,6 +7,10 @@
  * @packageDocumentation
  */
 // ====================
+// Permissions
+// ====================
+export { PERMISSIONS } from './common/permissions';
+// ====================
 // Billable Events (koios-billable-events queue)
 // ====================
 export { 
