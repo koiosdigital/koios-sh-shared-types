@@ -7,22 +7,17 @@
 /**
  * Subscription plan tiers
  */
-export type Plan = 'free' | 'starter' | 'pro' | 'enterprise'
+export type Plan = 'free' | 'pro' | 'enterprise'
 
 /**
  * Supported currencies
  */
-export type Currency = 'usd' | 'eur' | 'gbp'
-
-/**
- * User roles within a tenant
- */
-export type UserRole = 'owner' | 'admin' | 'member' | 'readonly'
+export type Currency = 'usd'
 
 /**
  * Billable resource types
  */
-export type BillableResource = 'members' | 'api_calls' | 'service_accounts' | 'storage'
+export type BillableResource = 'members' | 'certificate_authorities' | 'devices'
 
 /**
  * Subscription status
