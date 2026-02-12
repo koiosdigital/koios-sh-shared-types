@@ -102,7 +102,7 @@ export type {
 } from './queues/billing-events'
 
 // ====================
-// Koios Email Queue (koios-email queue)
+// Email Events (koios-email queue)
 // ====================
 
 export type {
