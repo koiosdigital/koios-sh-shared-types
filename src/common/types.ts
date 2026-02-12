@@ -22,9 +22,22 @@ export type BillableResource = 'members' | 'certificate_authorities' | 'devices'
 /**
  * Subscription status
  */
-export type SubscriptionStatus = 'active' | 'past_due' | 'canceled' | 'incomplete' | 'incomplete_expired' | 'trialing' | 'unpaid'
+export type SubscriptionStatus =
+  | 'active'
+  | 'past_due'
+  | 'canceled'
+  | 'incomplete'
+  | 'incomplete_expired'
+  | 'trialing'
+  | 'unpaid'
 
 /**
  * Tenant status
  */
 export type TenantStatus = 'active' | 'suspended' | 'deleted'
+
+/**
+ * User role within a tenant (appears in JWT tokens)
+ * Alias for DefaultRole - imported from permissions
+ */
+export type UserRole = 'owner' | 'admin' | 'member' | 'readonly'
