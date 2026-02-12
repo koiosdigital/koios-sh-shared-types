@@ -10,6 +10,7 @@
  */
 
 import { z } from 'zod'
+import { PLANS, BILLABLE_RESOURCES } from '../common/types'
 
 // ====================
 // Billing State Change Events
@@ -19,8 +20,8 @@ export const PlanChangedEventSchema = z.object({
   type: z.literal('billing.plan_changed'),
   timestamp: z.number(),
   tenantId: z.string(),
-  oldPlan: z.enum(['free', 'starter', 'pro', 'enterprise']),
-  newPlan: z.enum(['free', 'starter', 'pro', 'enterprise']),
+  oldPlan: z.enum(PLANS),
+  newPlan: z.enum(PLANS),
   effectiveDate: z.number(),
   reason: z.enum(['upgrade', 'downgrade', 'admin_override']).optional()
 })
@@ -49,7 +50,7 @@ export const UsageLimitExceededEventSchema = z.object({
   type: z.literal('billing.usage_limit_exceeded'),
   timestamp: z.number(),
   tenantId: z.string(),
-  resource: z.enum(['members', 'api_calls', 'service_accounts', 'storage']),
+  resource: z.enum(BILLABLE_RESOURCES),
   limit: z.number(),
   current: z.number(),
   overage: z.number()
