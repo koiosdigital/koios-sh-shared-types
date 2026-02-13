@@ -11,6 +11,7 @@
 import { z } from 'zod';
 export declare const MemberCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"member.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     userId: z.ZodString;
@@ -19,6 +20,7 @@ export declare const MemberCreatedEventSchema: z.ZodObject<{
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "member.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -27,6 +29,7 @@ export declare const MemberCreatedEventSchema: z.ZodObject<{
     metadata?: Record<string, unknown> | undefined;
 }, {
     type: "member.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -36,18 +39,21 @@ export declare const MemberCreatedEventSchema: z.ZodObject<{
 }>;
 export declare const MemberRemovedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"member.removed">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     userId: z.ZodString;
     reason: z.ZodOptional<z.ZodEnum<["deleted", "left", "transferred"]>>;
 }, "strip", z.ZodTypeAny, {
     type: "member.removed";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
     reason?: "deleted" | "left" | "transferred" | undefined;
 }, {
     type: "member.removed";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -55,6 +61,7 @@ export declare const MemberRemovedEventSchema: z.ZodObject<{
 }>;
 export declare const MemberUpdatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"member.updated">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     userId: z.ZodString;
@@ -70,6 +77,7 @@ export declare const MemberUpdatedEventSchema: z.ZodObject<{
     }>;
 }, "strip", z.ZodTypeAny, {
     type: "member.updated";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -79,6 +87,7 @@ export declare const MemberUpdatedEventSchema: z.ZodObject<{
     };
 }, {
     type: "member.updated";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -89,6 +98,7 @@ export declare const MemberUpdatedEventSchema: z.ZodObject<{
 }>;
 export declare const TenantCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"tenant.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     name: z.ZodString;
@@ -122,6 +132,7 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -141,6 +152,7 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
     paymentMethodId?: string | undefined;
 }, {
     type: "tenant.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -161,6 +173,7 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
 }>;
 export declare const TenantUpdatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"tenant.updated">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     changes: z.ZodObject<{
@@ -175,6 +188,7 @@ export declare const TenantUpdatedEventSchema: z.ZodObject<{
     }>;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.updated";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     changes: {
@@ -183,6 +197,7 @@ export declare const TenantUpdatedEventSchema: z.ZodObject<{
     };
 }, {
     type: "tenant.updated";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     changes: {
@@ -192,34 +207,40 @@ export declare const TenantUpdatedEventSchema: z.ZodObject<{
 }>;
 export declare const TenantDeletedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"tenant.deleted">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deletedBy: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deletedBy: string;
 }, {
     type: "tenant.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deletedBy: string;
 }>;
 export declare const ServiceAccountCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"service_account.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     serviceAccountId: z.ZodString;
     name: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "service_account.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
     serviceAccountId: string;
 }, {
     type: "service_account.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -227,22 +248,26 @@ export declare const ServiceAccountCreatedEventSchema: z.ZodObject<{
 }>;
 export declare const ServiceAccountDeletedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"service_account.deleted">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     serviceAccountId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "service_account.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     serviceAccountId: string;
 }, {
     type: "service_account.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     serviceAccountId: string;
 }>;
 export declare const ApiCallEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"api.call">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     endpoint: z.ZodString;
@@ -251,6 +276,7 @@ export declare const ApiCallEventSchema: z.ZodObject<{
     responseTime: z.ZodOptional<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
     type: "api.call";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     endpoint: string;
@@ -259,6 +285,7 @@ export declare const ApiCallEventSchema: z.ZodObject<{
     responseTime?: number | undefined;
 }, {
     type: "api.call";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     endpoint: string;
@@ -268,6 +295,7 @@ export declare const ApiCallEventSchema: z.ZodObject<{
 }>;
 export declare const DeviceCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"device.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deviceId: z.ZodString;
@@ -275,6 +303,7 @@ export declare const DeviceCreatedEventSchema: z.ZodObject<{
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "device.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deviceId: string;
@@ -282,6 +311,7 @@ export declare const DeviceCreatedEventSchema: z.ZodObject<{
     name?: string | undefined;
 }, {
     type: "device.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deviceId: string;
@@ -290,22 +320,26 @@ export declare const DeviceCreatedEventSchema: z.ZodObject<{
 }>;
 export declare const DeviceDeletedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"device.deleted">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deviceId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "device.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deviceId: string;
 }, {
     type: "device.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deviceId: string;
 }>;
 export declare const CertificateAuthorityCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"certificate_authority.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     caId: z.ZodString;
@@ -314,6 +348,7 @@ export declare const CertificateAuthorityCreatedEventSchema: z.ZodObject<{
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "certificate_authority.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -322,6 +357,7 @@ export declare const CertificateAuthorityCreatedEventSchema: z.ZodObject<{
     metadata?: Record<string, unknown> | undefined;
 }, {
     type: "certificate_authority.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -331,22 +367,26 @@ export declare const CertificateAuthorityCreatedEventSchema: z.ZodObject<{
 }>;
 export declare const CertificateAuthorityDeletedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"certificate_authority.deleted">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     caId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "certificate_authority.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     caId: string;
 }, {
     type: "certificate_authority.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     caId: string;
 }>;
 export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
     type: z.ZodLiteral<"member.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     userId: z.ZodString;
@@ -355,6 +395,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "member.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -363,6 +404,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     metadata?: Record<string, unknown> | undefined;
 }, {
     type: "member.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -371,24 +413,28 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     metadata?: Record<string, unknown> | undefined;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"member.removed">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     userId: z.ZodString;
     reason: z.ZodOptional<z.ZodEnum<["deleted", "left", "transferred"]>>;
 }, "strip", z.ZodTypeAny, {
     type: "member.removed";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
     reason?: "deleted" | "left" | "transferred" | undefined;
 }, {
     type: "member.removed";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
     reason?: "deleted" | "left" | "transferred" | undefined;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"member.updated">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     userId: z.ZodString;
@@ -404,6 +450,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     }>;
 }, "strip", z.ZodTypeAny, {
     type: "member.updated";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -413,6 +460,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     };
 }, {
     type: "member.updated";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     userId: string;
@@ -422,6 +470,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     };
 }>, z.ZodObject<{
     type: z.ZodLiteral<"tenant.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     name: z.ZodString;
@@ -455,6 +504,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -474,6 +524,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     paymentMethodId?: string | undefined;
 }, {
     type: "tenant.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -493,6 +544,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     paymentMethodId?: string | undefined;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"tenant.updated">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     changes: z.ZodObject<{
@@ -507,6 +559,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     }>;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.updated";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     changes: {
@@ -515,6 +568,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     };
 }, {
     type: "tenant.updated";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     changes: {
@@ -523,54 +577,64 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     };
 }>, z.ZodObject<{
     type: z.ZodLiteral<"tenant.deleted">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deletedBy: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deletedBy: string;
 }, {
     type: "tenant.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deletedBy: string;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"service_account.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     serviceAccountId: z.ZodString;
     name: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "service_account.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
     serviceAccountId: string;
 }, {
     type: "service_account.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
     serviceAccountId: string;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"service_account.deleted">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     serviceAccountId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "service_account.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     serviceAccountId: string;
 }, {
     type: "service_account.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     serviceAccountId: string;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"api.call">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     endpoint: z.ZodString;
@@ -579,6 +643,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     responseTime: z.ZodOptional<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
     type: "api.call";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     endpoint: string;
@@ -587,6 +652,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     responseTime?: number | undefined;
 }, {
     type: "api.call";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     endpoint: string;
@@ -595,6 +661,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     responseTime?: number | undefined;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"device.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deviceId: z.ZodString;
@@ -602,6 +669,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "device.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deviceId: string;
@@ -609,6 +677,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     name?: string | undefined;
 }, {
     type: "device.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deviceId: string;
@@ -616,21 +685,25 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     name?: string | undefined;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"device.deleted">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deviceId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "device.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deviceId: string;
 }, {
     type: "device.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     deviceId: string;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"certificate_authority.created">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     caId: z.ZodString;
@@ -639,6 +712,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "certificate_authority.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -647,6 +721,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     metadata?: Record<string, unknown> | undefined;
 }, {
     type: "certificate_authority.created";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     name: string;
@@ -655,16 +730,19 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     metadata?: Record<string, unknown> | undefined;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"certificate_authority.deleted">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     caId: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     type: "certificate_authority.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     caId: string;
 }, {
     type: "certificate_authority.deleted";
+    eventId: string;
     timestamp: number;
     tenantId: string;
     caId: string;
@@ -683,19 +761,19 @@ export type DeviceDeletedEvent = z.infer<typeof DeviceDeletedEventSchema>;
 export type CertificateAuthorityCreatedEvent = z.infer<typeof CertificateAuthorityCreatedEventSchema>;
 export type CertificateAuthorityDeletedEvent = z.infer<typeof CertificateAuthorityDeletedEventSchema>;
 export type BillableEvent = z.infer<typeof BillableEventSchema>;
-export declare function createMemberCreatedEvent(data: Omit<MemberCreatedEvent, 'type' | 'timestamp'>): MemberCreatedEvent;
-export declare function createMemberRemovedEvent(data: Omit<MemberRemovedEvent, 'type' | 'timestamp'>): MemberRemovedEvent;
-export declare function createMemberUpdatedEvent(data: Omit<MemberUpdatedEvent, 'type' | 'timestamp'>): MemberUpdatedEvent;
-export declare function createTenantCreatedEvent(data: Omit<TenantCreatedEvent, 'type' | 'timestamp'>): TenantCreatedEvent;
-export declare function createTenantUpdatedEvent(data: Omit<TenantUpdatedEvent, 'type' | 'timestamp'>): TenantUpdatedEvent;
-export declare function createTenantDeletedEvent(data: Omit<TenantDeletedEvent, 'type' | 'timestamp'>): TenantDeletedEvent;
-export declare function createServiceAccountCreatedEvent(data: Omit<ServiceAccountCreatedEvent, 'type' | 'timestamp'>): ServiceAccountCreatedEvent;
-export declare function createServiceAccountDeletedEvent(data: Omit<ServiceAccountDeletedEvent, 'type' | 'timestamp'>): ServiceAccountDeletedEvent;
-export declare function createApiCallEvent(data: Omit<ApiCallEvent, 'type' | 'timestamp'>): ApiCallEvent;
-export declare function createDeviceCreatedEvent(data: Omit<DeviceCreatedEvent, 'type' | 'timestamp'>): DeviceCreatedEvent;
-export declare function createDeviceDeletedEvent(data: Omit<DeviceDeletedEvent, 'type' | 'timestamp'>): DeviceDeletedEvent;
-export declare function createCertificateAuthorityCreatedEvent(data: Omit<CertificateAuthorityCreatedEvent, 'type' | 'timestamp'>): CertificateAuthorityCreatedEvent;
-export declare function createCertificateAuthorityDeletedEvent(data: Omit<CertificateAuthorityDeletedEvent, 'type' | 'timestamp'>): CertificateAuthorityDeletedEvent;
+export declare function createMemberCreatedEvent(data: Omit<MemberCreatedEvent, 'type' | 'eventId' | 'timestamp'>): MemberCreatedEvent;
+export declare function createMemberRemovedEvent(data: Omit<MemberRemovedEvent, 'type' | 'eventId' | 'timestamp'>): MemberRemovedEvent;
+export declare function createMemberUpdatedEvent(data: Omit<MemberUpdatedEvent, 'type' | 'eventId' | 'timestamp'>): MemberUpdatedEvent;
+export declare function createTenantCreatedEvent(data: Omit<TenantCreatedEvent, 'type' | 'eventId' | 'timestamp'>): TenantCreatedEvent;
+export declare function createTenantUpdatedEvent(data: Omit<TenantUpdatedEvent, 'type' | 'eventId' | 'timestamp'>): TenantUpdatedEvent;
+export declare function createTenantDeletedEvent(data: Omit<TenantDeletedEvent, 'type' | 'eventId' | 'timestamp'>): TenantDeletedEvent;
+export declare function createServiceAccountCreatedEvent(data: Omit<ServiceAccountCreatedEvent, 'type' | 'eventId' | 'timestamp'>): ServiceAccountCreatedEvent;
+export declare function createServiceAccountDeletedEvent(data: Omit<ServiceAccountDeletedEvent, 'type' | 'eventId' | 'timestamp'>): ServiceAccountDeletedEvent;
+export declare function createApiCallEvent(data: Omit<ApiCallEvent, 'type' | 'eventId' | 'timestamp'>): ApiCallEvent;
+export declare function createDeviceCreatedEvent(data: Omit<DeviceCreatedEvent, 'type' | 'eventId' | 'timestamp'>): DeviceCreatedEvent;
+export declare function createDeviceDeletedEvent(data: Omit<DeviceDeletedEvent, 'type' | 'eventId' | 'timestamp'>): DeviceDeletedEvent;
+export declare function createCertificateAuthorityCreatedEvent(data: Omit<CertificateAuthorityCreatedEvent, 'type' | 'eventId' | 'timestamp'>): CertificateAuthorityCreatedEvent;
+export declare function createCertificateAuthorityDeletedEvent(data: Omit<CertificateAuthorityDeletedEvent, 'type' | 'eventId' | 'timestamp'>): CertificateAuthorityDeletedEvent;
 /**
  * Validate and parse incoming billable event from queue
  */

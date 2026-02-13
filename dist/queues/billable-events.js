@@ -15,6 +15,7 @@ import { PLANS, BillingAddressSchema } from '../common/types';
 // ====================
 export const MemberCreatedEventSchema = z.object({
     type: z.literal('member.created'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     userId: z.string(),
@@ -24,6 +25,7 @@ export const MemberCreatedEventSchema = z.object({
 });
 export const MemberRemovedEventSchema = z.object({
     type: z.literal('member.removed'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     userId: z.string(),
@@ -31,6 +33,7 @@ export const MemberRemovedEventSchema = z.object({
 });
 export const MemberUpdatedEventSchema = z.object({
     type: z.literal('member.updated'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     userId: z.string(),
@@ -44,6 +47,7 @@ export const MemberUpdatedEventSchema = z.object({
 // ====================
 export const TenantCreatedEventSchema = z.object({
     type: z.literal('tenant.created'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     name: z.string(),
@@ -57,6 +61,7 @@ export const TenantCreatedEventSchema = z.object({
 });
 export const TenantUpdatedEventSchema = z.object({
     type: z.literal('tenant.updated'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     changes: z.object({
@@ -66,6 +71,7 @@ export const TenantUpdatedEventSchema = z.object({
 });
 export const TenantDeletedEventSchema = z.object({
     type: z.literal('tenant.deleted'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     deletedBy: z.string(),
@@ -75,6 +81,7 @@ export const TenantDeletedEventSchema = z.object({
 // ====================
 export const ServiceAccountCreatedEventSchema = z.object({
     type: z.literal('service_account.created'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     serviceAccountId: z.string(),
@@ -82,6 +89,7 @@ export const ServiceAccountCreatedEventSchema = z.object({
 });
 export const ServiceAccountDeletedEventSchema = z.object({
     type: z.literal('service_account.deleted'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     serviceAccountId: z.string(),
@@ -91,6 +99,7 @@ export const ServiceAccountDeletedEventSchema = z.object({
 // ====================
 export const ApiCallEventSchema = z.object({
     type: z.literal('api.call'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     endpoint: z.string(),
@@ -103,6 +112,7 @@ export const ApiCallEventSchema = z.object({
 // ====================
 export const DeviceCreatedEventSchema = z.object({
     type: z.literal('device.created'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     deviceId: z.string(),
@@ -111,6 +121,7 @@ export const DeviceCreatedEventSchema = z.object({
 });
 export const DeviceDeletedEventSchema = z.object({
     type: z.literal('device.deleted'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     deviceId: z.string(),
@@ -120,6 +131,7 @@ export const DeviceDeletedEventSchema = z.object({
 // ====================
 export const CertificateAuthorityCreatedEventSchema = z.object({
     type: z.literal('certificate_authority.created'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     caId: z.string(),
@@ -129,6 +141,7 @@ export const CertificateAuthorityCreatedEventSchema = z.object({
 });
 export const CertificateAuthorityDeletedEventSchema = z.object({
     type: z.literal('certificate_authority.deleted'),
+    eventId: z.string().uuid(),
     timestamp: z.number(),
     tenantId: z.string(),
     caId: z.string(),
@@ -157,6 +170,7 @@ export const BillableEventSchema = z.discriminatedUnion('type', [
 export function createMemberCreatedEvent(data) {
     return {
         type: 'member.created',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -164,6 +178,7 @@ export function createMemberCreatedEvent(data) {
 export function createMemberRemovedEvent(data) {
     return {
         type: 'member.removed',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -171,6 +186,7 @@ export function createMemberRemovedEvent(data) {
 export function createMemberUpdatedEvent(data) {
     return {
         type: 'member.updated',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -178,6 +194,7 @@ export function createMemberUpdatedEvent(data) {
 export function createTenantCreatedEvent(data) {
     return {
         type: 'tenant.created',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -185,6 +202,7 @@ export function createTenantCreatedEvent(data) {
 export function createTenantUpdatedEvent(data) {
     return {
         type: 'tenant.updated',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -192,6 +210,7 @@ export function createTenantUpdatedEvent(data) {
 export function createTenantDeletedEvent(data) {
     return {
         type: 'tenant.deleted',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -199,6 +218,7 @@ export function createTenantDeletedEvent(data) {
 export function createServiceAccountCreatedEvent(data) {
     return {
         type: 'service_account.created',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -206,6 +226,7 @@ export function createServiceAccountCreatedEvent(data) {
 export function createServiceAccountDeletedEvent(data) {
     return {
         type: 'service_account.deleted',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -213,6 +234,7 @@ export function createServiceAccountDeletedEvent(data) {
 export function createApiCallEvent(data) {
     return {
         type: 'api.call',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -220,6 +242,7 @@ export function createApiCallEvent(data) {
 export function createDeviceCreatedEvent(data) {
     return {
         type: 'device.created',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -227,6 +250,7 @@ export function createDeviceCreatedEvent(data) {
 export function createDeviceDeletedEvent(data) {
     return {
         type: 'device.deleted',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -234,6 +258,7 @@ export function createDeviceDeletedEvent(data) {
 export function createCertificateAuthorityCreatedEvent(data) {
     return {
         type: 'certificate_authority.created',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
@@ -241,6 +266,7 @@ export function createCertificateAuthorityCreatedEvent(data) {
 export function createCertificateAuthorityDeletedEvent(data) {
     return {
         type: 'certificate_authority.deleted',
+        eventId: crypto.randomUUID(),
         timestamp: Date.now(),
         ...data,
     };
