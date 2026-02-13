@@ -18,6 +18,7 @@ import { PLANS, BillingAddressSchema } from '../common/types'
 
 export const MemberCreatedEventSchema = z.object({
   type: z.literal('member.created'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   userId: z.string(),
@@ -28,6 +29,7 @@ export const MemberCreatedEventSchema = z.object({
 
 export const MemberRemovedEventSchema = z.object({
   type: z.literal('member.removed'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   userId: z.string(),
@@ -36,6 +38,7 @@ export const MemberRemovedEventSchema = z.object({
 
 export const MemberUpdatedEventSchema = z.object({
   type: z.literal('member.updated'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   userId: z.string(),
@@ -51,6 +54,7 @@ export const MemberUpdatedEventSchema = z.object({
 
 export const TenantCreatedEventSchema = z.object({
   type: z.literal('tenant.created'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   name: z.string(),
@@ -65,6 +69,7 @@ export const TenantCreatedEventSchema = z.object({
 
 export const TenantUpdatedEventSchema = z.object({
   type: z.literal('tenant.updated'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   changes: z.object({
@@ -75,6 +80,7 @@ export const TenantUpdatedEventSchema = z.object({
 
 export const TenantDeletedEventSchema = z.object({
   type: z.literal('tenant.deleted'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   deletedBy: z.string(),
@@ -86,6 +92,7 @@ export const TenantDeletedEventSchema = z.object({
 
 export const ServiceAccountCreatedEventSchema = z.object({
   type: z.literal('service_account.created'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   serviceAccountId: z.string(),
@@ -94,6 +101,7 @@ export const ServiceAccountCreatedEventSchema = z.object({
 
 export const ServiceAccountDeletedEventSchema = z.object({
   type: z.literal('service_account.deleted'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   serviceAccountId: z.string(),
@@ -105,6 +113,7 @@ export const ServiceAccountDeletedEventSchema = z.object({
 
 export const ApiCallEventSchema = z.object({
   type: z.literal('api.call'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   endpoint: z.string(),
@@ -119,6 +128,7 @@ export const ApiCallEventSchema = z.object({
 
 export const DeviceCreatedEventSchema = z.object({
   type: z.literal('device.created'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   deviceId: z.string(),
@@ -128,6 +138,7 @@ export const DeviceCreatedEventSchema = z.object({
 
 export const DeviceDeletedEventSchema = z.object({
   type: z.literal('device.deleted'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   deviceId: z.string(),
@@ -139,6 +150,7 @@ export const DeviceDeletedEventSchema = z.object({
 
 export const CertificateAuthorityCreatedEventSchema = z.object({
   type: z.literal('certificate_authority.created'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   caId: z.string(),
@@ -149,6 +161,7 @@ export const CertificateAuthorityCreatedEventSchema = z.object({
 
 export const CertificateAuthorityDeletedEventSchema = z.object({
   type: z.literal('certificate_authority.deleted'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   caId: z.string(),
@@ -208,128 +221,143 @@ export type BillableEvent = z.infer<typeof BillableEventSchema>
 // ====================
 
 export function createMemberCreatedEvent(
-  data: Omit<MemberCreatedEvent, 'type' | 'timestamp'>
+  data: Omit<MemberCreatedEvent, 'type' | 'eventId' | 'timestamp'>
 ): MemberCreatedEvent {
   return {
     type: 'member.created',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createMemberRemovedEvent(
-  data: Omit<MemberRemovedEvent, 'type' | 'timestamp'>
+  data: Omit<MemberRemovedEvent, 'type' | 'eventId' | 'timestamp'>
 ): MemberRemovedEvent {
   return {
     type: 'member.removed',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createMemberUpdatedEvent(
-  data: Omit<MemberUpdatedEvent, 'type' | 'timestamp'>
+  data: Omit<MemberUpdatedEvent, 'type' | 'eventId' | 'timestamp'>
 ): MemberUpdatedEvent {
   return {
     type: 'member.updated',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createTenantCreatedEvent(
-  data: Omit<TenantCreatedEvent, 'type' | 'timestamp'>
+  data: Omit<TenantCreatedEvent, 'type' | 'eventId' | 'timestamp'>
 ): TenantCreatedEvent {
   return {
     type: 'tenant.created',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createTenantUpdatedEvent(
-  data: Omit<TenantUpdatedEvent, 'type' | 'timestamp'>
+  data: Omit<TenantUpdatedEvent, 'type' | 'eventId' | 'timestamp'>
 ): TenantUpdatedEvent {
   return {
     type: 'tenant.updated',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createTenantDeletedEvent(
-  data: Omit<TenantDeletedEvent, 'type' | 'timestamp'>
+  data: Omit<TenantDeletedEvent, 'type' | 'eventId' | 'timestamp'>
 ): TenantDeletedEvent {
   return {
     type: 'tenant.deleted',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createServiceAccountCreatedEvent(
-  data: Omit<ServiceAccountCreatedEvent, 'type' | 'timestamp'>
+  data: Omit<ServiceAccountCreatedEvent, 'type' | 'eventId' | 'timestamp'>
 ): ServiceAccountCreatedEvent {
   return {
     type: 'service_account.created',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createServiceAccountDeletedEvent(
-  data: Omit<ServiceAccountDeletedEvent, 'type' | 'timestamp'>
+  data: Omit<ServiceAccountDeletedEvent, 'type' | 'eventId' | 'timestamp'>
 ): ServiceAccountDeletedEvent {
   return {
     type: 'service_account.deleted',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
-export function createApiCallEvent(data: Omit<ApiCallEvent, 'type' | 'timestamp'>): ApiCallEvent {
+export function createApiCallEvent(
+  data: Omit<ApiCallEvent, 'type' | 'eventId' | 'timestamp'>
+): ApiCallEvent {
   return {
     type: 'api.call',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createDeviceCreatedEvent(
-  data: Omit<DeviceCreatedEvent, 'type' | 'timestamp'>
+  data: Omit<DeviceCreatedEvent, 'type' | 'eventId' | 'timestamp'>
 ): DeviceCreatedEvent {
   return {
     type: 'device.created',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createDeviceDeletedEvent(
-  data: Omit<DeviceDeletedEvent, 'type' | 'timestamp'>
+  data: Omit<DeviceDeletedEvent, 'type' | 'eventId' | 'timestamp'>
 ): DeviceDeletedEvent {
   return {
     type: 'device.deleted',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createCertificateAuthorityCreatedEvent(
-  data: Omit<CertificateAuthorityCreatedEvent, 'type' | 'timestamp'>
+  data: Omit<CertificateAuthorityCreatedEvent, 'type' | 'eventId' | 'timestamp'>
 ): CertificateAuthorityCreatedEvent {
   return {
     type: 'certificate_authority.created',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createCertificateAuthorityDeletedEvent(
-  data: Omit<CertificateAuthorityDeletedEvent, 'type' | 'timestamp'>
+  data: Omit<CertificateAuthorityDeletedEvent, 'type' | 'eventId' | 'timestamp'>
 ): CertificateAuthorityDeletedEvent {
   return {
     type: 'certificate_authority.deleted',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
