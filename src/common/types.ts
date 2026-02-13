@@ -178,7 +178,7 @@ export interface PlanPricing {
 export const PLAN_PRICING: Record<Plan, PlanPricing> = {
   free: {
     basePrice: 0,
-    stripePriceId: null, // No Stripe subscription for free tier
+    stripePriceId: 'price_1T0SiPPEBowdz9OiQUFoboS4', // $0/month - subscription for fraud prevention
   },
   pro: {
     basePrice: 49,

@@ -78,7 +78,7 @@ export const PLAN_FEATURES = {
 export const PLAN_PRICING = {
     free: {
         basePrice: 0,
-        stripePriceId: null, // No Stripe subscription for free tier
+        stripePriceId: 'price_1T0SiPPEBowdz9OiQUFoboS4', // $0/month - subscription for fraud prevention
     },
     pro: {
         basePrice: 49,
