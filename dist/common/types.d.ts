@@ -83,4 +83,24 @@ export declare const PLAN_LIMITS: Record<Plan, PlanLimits>;
  * Feature gates by plan tier
  */
 export declare const PLAN_FEATURES: Record<Plan, FeatureGates>;
+/**
+ * Plan pricing information
+ */
+export interface PlanPricing {
+    basePrice: number;
+    stripePriceId: string | null;
+    meteredPricing?: {
+        members?: MeteredPricing;
+        devices?: MeteredPricing;
+        certificate_authorities?: MeteredPricing;
+    };
+}
+/**
+ * Pricing by plan tier
+ */
+export declare const PLAN_PRICING: Record<Plan, PlanPricing>;
+/**
+ * Complete plan configuration combining limits, features, and pricing
+ */
+export declare const PLANS_CONFIG: Record<Plan, PlanConfig>;
 //# sourceMappingURL=types.d.ts.map

@@ -11,7 +11,14 @@
 // Common Types
 // ====================
 
-export { PLANS, BILLABLE_RESOURCES, PLAN_LIMITS, PLAN_FEATURES } from './common/types'
+export {
+  PLANS,
+  BILLABLE_RESOURCES,
+  PLAN_LIMITS,
+  PLAN_FEATURES,
+  PLAN_PRICING,
+  PLANS_CONFIG,
+} from './common/types'
 
 export type {
   Plan,
@@ -24,6 +31,7 @@ export type {
   PlanConfig,
   PricingTier,
   MeteredPricing,
+  PlanPricing,
 } from './common/types'
 
 // ====================
