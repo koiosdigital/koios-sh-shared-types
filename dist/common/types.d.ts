@@ -7,7 +7,7 @@
  * Subscription plan tiers
  */
 export declare const PLANS: readonly ["free", "pro", "enterprise"];
-export type Plan = typeof PLANS[number];
+export type Plan = (typeof PLANS)[number];
 /**
  * Supported currencies
  */
@@ -16,7 +16,7 @@ export type Currency = 'usd';
  * Billable resource types
  */
 export declare const BILLABLE_RESOURCES: readonly ["members", "certificate_authorities", "devices"];
-export type BillableResource = typeof BILLABLE_RESOURCES[number];
+export type BillableResource = (typeof BILLABLE_RESOURCES)[number];
 /**
  * Subscription status
  */

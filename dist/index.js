@@ -15,11 +15,11 @@ export { PERMISSIONS } from './common/permissions';
 // ====================
 export { 
 // Schemas
-MemberCreatedEventSchema, MemberRemovedEventSchema, MemberUpdatedEventSchema, TenantCreatedEventSchema, TenantUpdatedEventSchema, TenantDeletedEventSchema, ServiceAccountCreatedEventSchema, ServiceAccountDeletedEventSchema, ApiCallEventSchema, BillableEventSchema, 
+MemberCreatedEventSchema, MemberRemovedEventSchema, MemberUpdatedEventSchema, TenantCreatedEventSchema, TenantUpdatedEventSchema, TenantDeletedEventSchema, ServiceAccountCreatedEventSchema, ServiceAccountDeletedEventSchema, ApiCallEventSchema, DeviceCreatedEventSchema, DeviceDeletedEventSchema, CertificateAuthorityCreatedEventSchema, CertificateAuthorityDeletedEventSchema, BillableEventSchema, 
 // Event Creators
-createMemberCreatedEvent, createMemberRemovedEvent, createMemberUpdatedEvent, createTenantCreatedEvent, createTenantUpdatedEvent, createTenantDeletedEvent, createServiceAccountCreatedEvent, createServiceAccountDeletedEvent, createApiCallEvent, 
+createMemberCreatedEvent, createMemberRemovedEvent, createMemberUpdatedEvent, createTenantCreatedEvent, createTenantUpdatedEvent, createTenantDeletedEvent, createServiceAccountCreatedEvent, createServiceAccountDeletedEvent, createApiCallEvent, createDeviceCreatedEvent, createDeviceDeletedEvent, createCertificateAuthorityCreatedEvent, createCertificateAuthorityDeletedEvent, 
 // Parser
-parseBillableEvent } from './queues/billable-events';
+parseBillableEvent, } from './queues/billable-events';
 // ====================
 // Billing Events (koios-billing-events queue)
 // ====================
@@ -29,5 +29,5 @@ PlanChangedEventSchema, PaymentFailedEventSchema, SubscriptionCancelledEventSche
 // Event Creators
 createPlanChangedEvent, createPaymentFailedEvent, createSubscriptionCancelledEvent, createUsageLimitExceededEvent, 
 // Parser
-parseBillingEvent } from './queues/billing-events';
+parseBillingEvent, } from './queues/billing-events';
 //# sourceMappingURL=index.js.map

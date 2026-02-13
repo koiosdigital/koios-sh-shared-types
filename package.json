@@ -40,7 +40,11 @@
     "build": "tsc",
     "type-check": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "prepublishOnly": "pnpm run clean && pnpm run build"
+    "prepublishOnly": "pnpm run clean && pnpm run build",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix"
   },
   "keywords": [
     "koios",
@@ -60,6 +64,11 @@
     "zod": "^3.22.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.55.0",
+    "@typescript-eslint/parser": "^8.55.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.8.1",
     "typescript": "^5.6.0",
     "zod": "^3.22.0"
   }

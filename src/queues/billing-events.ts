@@ -23,7 +23,7 @@ export const PlanChangedEventSchema = z.object({
   oldPlan: z.enum(PLANS),
   newPlan: z.enum(PLANS),
   effectiveDate: z.number(),
-  reason: z.enum(['upgrade', 'downgrade', 'admin_override']).optional()
+  reason: z.enum(['upgrade', 'downgrade', 'admin_override']).optional(),
 })
 
 export const PaymentFailedEventSchema = z.object({
@@ -34,7 +34,7 @@ export const PaymentFailedEventSchema = z.object({
   amount: z.number(),
   currency: z.string(),
   attemptCount: z.number(),
-  nextRetryDate: z.number().optional()
+  nextRetryDate: z.number().optional(),
 })
 
 export const SubscriptionCancelledEventSchema = z.object({
@@ -43,7 +43,7 @@ export const SubscriptionCancelledEventSchema = z.object({
   tenantId: z.string(),
   subscriptionId: z.string(),
   reason: z.enum(['customer_request', 'payment_failed', 'admin_action']),
-  effectiveDate: z.number()
+  effectiveDate: z.number(),
 })
 
 export const UsageLimitExceededEventSchema = z.object({
@@ -53,7 +53,7 @@ export const UsageLimitExceededEventSchema = z.object({
   resource: z.enum(BILLABLE_RESOURCES),
   limit: z.number(),
   current: z.number(),
-  overage: z.number()
+  overage: z.number(),
 })
 
 // ====================
@@ -64,7 +64,7 @@ export const BillingEventSchema = z.discriminatedUnion('type', [
   PlanChangedEventSchema,
   PaymentFailedEventSchema,
   SubscriptionCancelledEventSchema,
-  UsageLimitExceededEventSchema
+  UsageLimitExceededEventSchema,
 ])
 
 // ====================
@@ -82,35 +82,43 @@ export type BillingEvent = z.infer<typeof BillingEventSchema>
 // Event Creators
 // ====================
 
-export function createPlanChangedEvent(data: Omit<PlanChangedEvent, 'type' | 'timestamp'>): PlanChangedEvent {
+export function createPlanChangedEvent(
+  data: Omit<PlanChangedEvent, 'type' | 'timestamp'>
+): PlanChangedEvent {
   return {
     type: 'billing.plan_changed',
     timestamp: Date.now(),
-    ...data
+    ...data,
   }
 }
 
-export function createPaymentFailedEvent(data: Omit<PaymentFailedEvent, 'type' | 'timestamp'>): PaymentFailedEvent {
+export function createPaymentFailedEvent(
+  data: Omit<PaymentFailedEvent, 'type' | 'timestamp'>
+): PaymentFailedEvent {
   return {
     type: 'billing.payment_failed',
     timestamp: Date.now(),
-    ...data
+    ...data,
   }
 }
 
-export function createSubscriptionCancelledEvent(data: Omit<SubscriptionCancelledEvent, 'type' | 'timestamp'>): SubscriptionCancelledEvent {
+export function createSubscriptionCancelledEvent(
+  data: Omit<SubscriptionCancelledEvent, 'type' | 'timestamp'>
+): SubscriptionCancelledEvent {
   return {
     type: 'billing.subscription_cancelled',
     timestamp: Date.now(),
-    ...data
+    ...data,
   }
 }
 
-export function createUsageLimitExceededEvent(data: Omit<UsageLimitExceededEvent, 'type' | 'timestamp'>): UsageLimitExceededEvent {
+export function createUsageLimitExceededEvent(
+  data: Omit<UsageLimitExceededEvent, 'type' | 'timestamp'>
+): UsageLimitExceededEvent {
   return {
     type: 'billing.usage_limit_exceeded',
     timestamp: Date.now(),
-    ...data
+    ...data,
   }
 }
 

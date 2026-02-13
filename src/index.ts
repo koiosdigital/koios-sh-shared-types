@@ -16,7 +16,7 @@ export type {
   Currency,
   BillableResource,
   SubscriptionStatus,
-  TenantStatus
+  TenantStatus,
 } from './common/types'
 
 // ====================
@@ -41,6 +41,10 @@ export {
   ServiceAccountCreatedEventSchema,
   ServiceAccountDeletedEventSchema,
   ApiCallEventSchema,
+  DeviceCreatedEventSchema,
+  DeviceDeletedEventSchema,
+  CertificateAuthorityCreatedEventSchema,
+  CertificateAuthorityDeletedEventSchema,
   BillableEventSchema,
 
   // Event Creators
@@ -53,9 +57,13 @@ export {
   createServiceAccountCreatedEvent,
   createServiceAccountDeletedEvent,
   createApiCallEvent,
+  createDeviceCreatedEvent,
+  createDeviceDeletedEvent,
+  createCertificateAuthorityCreatedEvent,
+  createCertificateAuthorityDeletedEvent,
 
   // Parser
-  parseBillableEvent
+  parseBillableEvent,
 } from './queues/billable-events'
 
 export type {
@@ -68,7 +76,11 @@ export type {
   ServiceAccountCreatedEvent,
   ServiceAccountDeletedEvent,
   ApiCallEvent,
-  BillableEvent
+  DeviceCreatedEvent,
+  DeviceDeletedEvent,
+  CertificateAuthorityCreatedEvent,
+  CertificateAuthorityDeletedEvent,
+  BillableEvent,
 } from './queues/billable-events'
 
 // ====================
@@ -90,7 +102,7 @@ export {
   createUsageLimitExceededEvent,
 
   // Parser
-  parseBillingEvent
+  parseBillingEvent,
 } from './queues/billing-events'
 
 export type {
@@ -98,7 +110,7 @@ export type {
   PaymentFailedEvent,
   SubscriptionCancelledEvent,
   UsageLimitExceededEvent,
-  BillingEvent
+  BillingEvent,
 } from './queues/billing-events'
 
 // ====================
@@ -112,5 +124,5 @@ export type {
   VerifyEmailPayload,
   OrganizationInvitePayload,
   EmailQueueMessage,
-  EmailType
+  EmailType,
 } from './queues/koios-email'

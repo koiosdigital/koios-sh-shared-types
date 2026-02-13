@@ -20,7 +20,7 @@ export const PlanChangedEventSchema = z.object({
     oldPlan: z.enum(PLANS),
     newPlan: z.enum(PLANS),
     effectiveDate: z.number(),
-    reason: z.enum(['upgrade', 'downgrade', 'admin_override']).optional()
+    reason: z.enum(['upgrade', 'downgrade', 'admin_override']).optional(),
 });
 export const PaymentFailedEventSchema = z.object({
     type: z.literal('billing.payment_failed'),
@@ -30,7 +30,7 @@ export const PaymentFailedEventSchema = z.object({
     amount: z.number(),
     currency: z.string(),
     attemptCount: z.number(),
-    nextRetryDate: z.number().optional()
+    nextRetryDate: z.number().optional(),
 });
 export const SubscriptionCancelledEventSchema = z.object({
     type: z.literal('billing.subscription_cancelled'),
@@ -38,7 +38,7 @@ export const SubscriptionCancelledEventSchema = z.object({
     tenantId: z.string(),
     subscriptionId: z.string(),
     reason: z.enum(['customer_request', 'payment_failed', 'admin_action']),
-    effectiveDate: z.number()
+    effectiveDate: z.number(),
 });
 export const UsageLimitExceededEventSchema = z.object({
     type: z.literal('billing.usage_limit_exceeded'),
@@ -47,7 +47,7 @@ export const UsageLimitExceededEventSchema = z.object({
     resource: z.enum(BILLABLE_RESOURCES),
     limit: z.number(),
     current: z.number(),
-    overage: z.number()
+    overage: z.number(),
 });
 // ====================
 // Union Schema
@@ -56,7 +56,7 @@ export const BillingEventSchema = z.discriminatedUnion('type', [
     PlanChangedEventSchema,
     PaymentFailedEventSchema,
     SubscriptionCancelledEventSchema,
-    UsageLimitExceededEventSchema
+    UsageLimitExceededEventSchema,
 ]);
 // ====================
 // Event Creators
@@ -65,28 +65,28 @@ export function createPlanChangedEvent(data) {
     return {
         type: 'billing.plan_changed',
         timestamp: Date.now(),
-        ...data
+        ...data,
     };
 }
 export function createPaymentFailedEvent(data) {
     return {
         type: 'billing.payment_failed',
         timestamp: Date.now(),
-        ...data
+        ...data,
     };
 }
 export function createSubscriptionCancelledEvent(data) {
     return {
         type: 'billing.subscription_cancelled',
         timestamp: Date.now(),
-        ...data
+        ...data,
     };
 }
 export function createUsageLimitExceededEvent(data) {
     return {
         type: 'billing.usage_limit_exceeded',
         timestamp: Date.now(),
-        ...data
+        ...data,
     };
 }
 // ====================
