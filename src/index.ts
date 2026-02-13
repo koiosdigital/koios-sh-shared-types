@@ -11,12 +11,19 @@
 // Common Types
 // ====================
 
+export { PLANS, BILLABLE_RESOURCES, PLAN_LIMITS, PLAN_FEATURES } from './common/types'
+
 export type {
   Plan,
   Currency,
   BillableResource,
   SubscriptionStatus,
   TenantStatus,
+  FeatureGates,
+  PlanLimits,
+  PlanConfig,
+  PricingTier,
+  MeteredPricing,
 } from './common/types'
 
 // ====================

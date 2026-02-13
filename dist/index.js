@@ -7,6 +7,10 @@
  * @packageDocumentation
  */
 // ====================
+// Common Types
+// ====================
+export { PLANS, BILLABLE_RESOURCES, PLAN_LIMITS, PLAN_FEATURES } from './common/types';
+// ====================
 // Permissions
 // ====================
 export { PERMISSIONS } from './common/permissions';

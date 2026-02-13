@@ -25,4 +25,62 @@ export type SubscriptionStatus = 'active' | 'past_due' | 'canceled' | 'incomplet
  * Tenant status
  */
 export type TenantStatus = 'active' | 'suspended' | 'deleted';
+/**
+ * Feature gates for plan tiers
+ */
+export interface FeatureGates {
+    customRoles: boolean;
+    sso: boolean;
+    auditExport: boolean;
+    saml_scim: boolean;
+    byoca: boolean;
+    log_retention: number;
+}
+/**
+ * Plan resource limits
+ */
+export interface PlanLimits {
+    members: number | null;
+    certificate_authorities: number | null;
+    devices: number | null;
+}
+/**
+ * Pricing tier for graduated pricing
+ */
+export interface PricingTier {
+    upTo: number | null;
+    unitPrice: number;
+}
+/**
+ * Metered pricing configuration
+ */
+export interface MeteredPricing {
+    priceId: string;
+    meterId: string;
+    unitPrice?: number;
+    tiers?: PricingTier[];
+}
+/**
+ * Plan configuration
+ */
+export interface PlanConfig {
+    name: string;
+    priceId: string | null;
+    basePrice?: number;
+    limits: PlanLimits;
+    features: FeatureGates;
+    meteredPricing?: {
+        members?: MeteredPricing;
+        devices?: MeteredPricing;
+        certificate_authorities?: MeteredPricing;
+    };
+}
+/**
+ * Plan limits by tier
+ */
+export declare const PLAN_LIMITS: Record<Plan, PlanLimits>;
+/**
+ * Feature gates by plan tier
+ */
+export declare const PLAN_FEATURES: Record<Plan, FeatureGates>;
 //# sourceMappingURL=types.d.ts.map
