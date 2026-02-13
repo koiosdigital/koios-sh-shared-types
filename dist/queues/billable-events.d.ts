@@ -93,7 +93,7 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
     tenantId: z.ZodString;
     name: z.ZodString;
     ownerId: z.ZodString;
-    plan: z.ZodEnum<["free", "starter", "pro", "enterprise"]>;
+    plan: z.ZodEnum<["free", "pro", "enterprise"]>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.created";
@@ -101,7 +101,7 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
     tenantId: string;
     name: string;
     ownerId: string;
-    plan: "free" | "pro" | "enterprise" | "starter";
+    plan: "free" | "pro" | "enterprise";
     metadata?: Record<string, unknown> | undefined;
 }, {
     type: "tenant.created";
@@ -109,7 +109,7 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
     tenantId: string;
     name: string;
     ownerId: string;
-    plan: "free" | "pro" | "enterprise" | "starter";
+    plan: "free" | "pro" | "enterprise";
     metadata?: Record<string, unknown> | undefined;
 }>;
 export declare const TenantUpdatedEventSchema: z.ZodObject<{
@@ -379,7 +379,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     tenantId: z.ZodString;
     name: z.ZodString;
     ownerId: z.ZodString;
-    plan: z.ZodEnum<["free", "starter", "pro", "enterprise"]>;
+    plan: z.ZodEnum<["free", "pro", "enterprise"]>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.created";
@@ -387,7 +387,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     tenantId: string;
     name: string;
     ownerId: string;
-    plan: "free" | "pro" | "enterprise" | "starter";
+    plan: "free" | "pro" | "enterprise";
     metadata?: Record<string, unknown> | undefined;
 }, {
     type: "tenant.created";
@@ -395,7 +395,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     tenantId: string;
     name: string;
     ownerId: string;
-    plan: "free" | "pro" | "enterprise" | "starter";
+    plan: "free" | "pro" | "enterprise";
     metadata?: Record<string, unknown> | undefined;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"tenant.updated">;

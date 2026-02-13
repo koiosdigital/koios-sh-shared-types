@@ -9,6 +9,7 @@
  * Consumer: Billing service
  */
 import { z } from 'zod';
+import { PLANS } from '../common/types';
 // ====================
 // Member Events
 // ====================
@@ -47,8 +48,8 @@ export const TenantCreatedEventSchema = z.object({
     tenantId: z.string(),
     name: z.string(),
     ownerId: z.string(),
-    plan: z.enum(['free', 'starter', 'pro', 'enterprise']),
-    metadata: z.record(z.unknown()).optional(),
+    plan: z.enum(PLANS),
+    metadata: z.record(z.string(), z.unknown()).optional(),
 });
 export const TenantUpdatedEventSchema = z.object({
     type: z.literal('tenant.updated'),
