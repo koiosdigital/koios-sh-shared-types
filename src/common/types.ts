@@ -4,11 +4,26 @@
  * Shared domain types used across multiple services and event schemas.
  */
 
+import { z } from 'zod'
+
 /**
  * Subscription plan tiers
  */
 export const PLANS = ['free', 'pro', 'enterprise'] as const
 export type Plan = (typeof PLANS)[number]
+
+/**
+ * Billing address (international format)
+ */
+export const BillingAddressSchema = z.object({
+  line1: z.string().min(1),
+  line2: z.string().optional(),
+  city: z.string().min(1),
+  state: z.string().optional(),
+  postalCode: z.string().optional(),
+  country: z.string().length(2), // ISO 3166-1 alpha-2
+})
+export type BillingAddress = z.infer<typeof BillingAddressSchema>
 
 /**
  * Supported currencies

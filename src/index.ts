@@ -18,6 +18,7 @@ export {
   PLAN_FEATURES,
   PLAN_PRICING,
   PLANS_CONFIG,
+  BillingAddressSchema,
 } from './common/types'
 
 export type {
@@ -32,6 +33,7 @@ export type {
   PricingTier,
   MeteredPricing,
   PlanPricing,
+  BillingAddress,
 } from './common/types'
 
 // ====================

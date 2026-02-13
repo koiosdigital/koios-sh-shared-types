@@ -10,7 +10,7 @@
  */
 
 import { z } from 'zod'
-import { PLANS } from '../common/types'
+import { PLANS, BillingAddressSchema } from '../common/types'
 
 // ====================
 // Member Events
@@ -55,7 +55,11 @@ export const TenantCreatedEventSchema = z.object({
   tenantId: z.string(),
   name: z.string(),
   ownerId: z.string(),
+  ownerEmail: z.string().email(),
+  ownerName: z.string(),
   plan: z.enum(PLANS),
+  billingAddress: BillingAddressSchema.optional(),
+  paymentMethodId: z.string().optional(),
   metadata: z.record(z.string(), z.unknown()).optional(),
 })
 

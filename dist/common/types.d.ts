@@ -3,11 +3,38 @@
  *
  * Shared domain types used across multiple services and event schemas.
  */
+import { z } from 'zod';
 /**
  * Subscription plan tiers
  */
 export declare const PLANS: readonly ["free", "pro", "enterprise"];
 export type Plan = (typeof PLANS)[number];
+/**
+ * Billing address (international format)
+ */
+export declare const BillingAddressSchema: z.ZodObject<{
+    line1: z.ZodString;
+    line2: z.ZodOptional<z.ZodString>;
+    city: z.ZodString;
+    state: z.ZodOptional<z.ZodString>;
+    postalCode: z.ZodOptional<z.ZodString>;
+    country: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    line1: string;
+    city: string;
+    country: string;
+    line2?: string | undefined;
+    state?: string | undefined;
+    postalCode?: string | undefined;
+}, {
+    line1: string;
+    city: string;
+    country: string;
+    line2?: string | undefined;
+    state?: string | undefined;
+    postalCode?: string | undefined;
+}>;
+export type BillingAddress = z.infer<typeof BillingAddressSchema>;
 /**
  * Supported currencies
  */

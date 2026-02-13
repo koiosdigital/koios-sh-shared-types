@@ -93,7 +93,32 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
     tenantId: z.ZodString;
     name: z.ZodString;
     ownerId: z.ZodString;
+    ownerEmail: z.ZodString;
+    ownerName: z.ZodString;
     plan: z.ZodEnum<["free", "pro", "enterprise"]>;
+    billingAddress: z.ZodOptional<z.ZodObject<{
+        line1: z.ZodString;
+        line2: z.ZodOptional<z.ZodString>;
+        city: z.ZodString;
+        state: z.ZodOptional<z.ZodString>;
+        postalCode: z.ZodOptional<z.ZodString>;
+        country: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        line1: string;
+        city: string;
+        country: string;
+        line2?: string | undefined;
+        state?: string | undefined;
+        postalCode?: string | undefined;
+    }, {
+        line1: string;
+        city: string;
+        country: string;
+        line2?: string | undefined;
+        state?: string | undefined;
+        postalCode?: string | undefined;
+    }>>;
+    paymentMethodId: z.ZodOptional<z.ZodString>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.created";
@@ -101,16 +126,38 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
     tenantId: string;
     name: string;
     ownerId: string;
+    ownerEmail: string;
+    ownerName: string;
     plan: "free" | "pro" | "enterprise";
     metadata?: Record<string, unknown> | undefined;
+    billingAddress?: {
+        line1: string;
+        city: string;
+        country: string;
+        line2?: string | undefined;
+        state?: string | undefined;
+        postalCode?: string | undefined;
+    } | undefined;
+    paymentMethodId?: string | undefined;
 }, {
     type: "tenant.created";
     timestamp: number;
     tenantId: string;
     name: string;
     ownerId: string;
+    ownerEmail: string;
+    ownerName: string;
     plan: "free" | "pro" | "enterprise";
     metadata?: Record<string, unknown> | undefined;
+    billingAddress?: {
+        line1: string;
+        city: string;
+        country: string;
+        line2?: string | undefined;
+        state?: string | undefined;
+        postalCode?: string | undefined;
+    } | undefined;
+    paymentMethodId?: string | undefined;
 }>;
 export declare const TenantUpdatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"tenant.updated">;
@@ -379,7 +426,32 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     tenantId: z.ZodString;
     name: z.ZodString;
     ownerId: z.ZodString;
+    ownerEmail: z.ZodString;
+    ownerName: z.ZodString;
     plan: z.ZodEnum<["free", "pro", "enterprise"]>;
+    billingAddress: z.ZodOptional<z.ZodObject<{
+        line1: z.ZodString;
+        line2: z.ZodOptional<z.ZodString>;
+        city: z.ZodString;
+        state: z.ZodOptional<z.ZodString>;
+        postalCode: z.ZodOptional<z.ZodString>;
+        country: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        line1: string;
+        city: string;
+        country: string;
+        line2?: string | undefined;
+        state?: string | undefined;
+        postalCode?: string | undefined;
+    }, {
+        line1: string;
+        city: string;
+        country: string;
+        line2?: string | undefined;
+        state?: string | undefined;
+        postalCode?: string | undefined;
+    }>>;
+    paymentMethodId: z.ZodOptional<z.ZodString>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
 }, "strip", z.ZodTypeAny, {
     type: "tenant.created";
@@ -387,16 +459,38 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     tenantId: string;
     name: string;
     ownerId: string;
+    ownerEmail: string;
+    ownerName: string;
     plan: "free" | "pro" | "enterprise";
     metadata?: Record<string, unknown> | undefined;
+    billingAddress?: {
+        line1: string;
+        city: string;
+        country: string;
+        line2?: string | undefined;
+        state?: string | undefined;
+        postalCode?: string | undefined;
+    } | undefined;
+    paymentMethodId?: string | undefined;
 }, {
     type: "tenant.created";
     timestamp: number;
     tenantId: string;
     name: string;
     ownerId: string;
+    ownerEmail: string;
+    ownerName: string;
     plan: "free" | "pro" | "enterprise";
     metadata?: Record<string, unknown> | undefined;
+    billingAddress?: {
+        line1: string;
+        city: string;
+        country: string;
+        line2?: string | undefined;
+        state?: string | undefined;
+        postalCode?: string | undefined;
+    } | undefined;
+    paymentMethodId?: string | undefined;
 }>, z.ZodObject<{
     type: z.ZodLiteral<"tenant.updated">;
     timestamp: z.ZodNumber;
