@@ -123,9 +123,9 @@ export const PLAN_LIMITS: Record<Plan, PlanLimits> = {
     devices: 50,
   },
   enterprise: {
-    members: 25,
-    certificate_authorities: null, // Unlimited with BYOCA
-    devices: null, // Unlimited
+    members: 10,
+    certificate_authorities: 1,
+    devices: 200,
   },
 }
 
