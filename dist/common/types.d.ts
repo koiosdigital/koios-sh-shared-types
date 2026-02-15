@@ -75,6 +75,7 @@ export interface PlanLimits {
  * Pricing tier for graduated pricing
  */
 export interface PricingTier {
+    start?: number;
     upTo: number | null;
     unitPrice: number;
 }

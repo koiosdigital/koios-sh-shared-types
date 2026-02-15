@@ -105,7 +105,7 @@ export const PLAN_PRICING = {
                 meterId: 'mtr_test_61U9YOsC8ZLIAKms641PEBowdz9Oi81Y',
                 // Graduated: $12/0-50, $10/50-100, $8/100+
                 tiers: [
-                    { upTo: 50, unitPrice: 12 },
+                    { start: 11, upTo: 50, unitPrice: 12 },
                     { upTo: 100, unitPrice: 10 },
                     { upTo: null, unitPrice: 8 }, // null = infinity
                 ],
@@ -120,7 +120,7 @@ export const PLAN_PRICING = {
                 meterId: 'mtr_test_61U9YOyuNvWuyOsxw41PEBowdz9Oi79U',
                 // Graduated: $0.10/0-1K, $0.08/1K-10K, $0.05/10K+
                 tiers: [
-                    { upTo: 1000, unitPrice: 0.1 },
+                    { start: 101, upTo: 1000, unitPrice: 0.1 },
                     { upTo: 10000, unitPrice: 0.08 },
                     { upTo: null, unitPrice: 0.05 }, // null = infinity
                 ],
