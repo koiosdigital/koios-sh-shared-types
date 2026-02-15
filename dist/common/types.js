@@ -40,7 +40,7 @@ export const PLAN_LIMITS = {
     enterprise: {
         members: 10,
         certificate_authorities: 1,
-        devices: 200,
+        devices: 100,
     },
 };
 /**
