@@ -85,14 +85,22 @@ export const PLAN_PRICING = {
         stripePriceId: 'price_1T0ARHPEBowdz9OibIUNmeap',
         meteredPricing: {
             members: {
-                priceId: 'price_1T0ARmPEBowdz9OiFK2RJp59',
-                meterId: 'mtr_test_61U9YOsC8ZLIAKms641PEBowdz9Oi81Y',
-                unitPrice: 15, // $15 per member overage
+                priceId: 'price_1T1sm1PEBowdz9OirAL0NkJI',
+                meterId: 'mtr_test_61UBGfr7dkGp5gWPp41PEBowdz9OiEU4',
+                unitPrice: 15, // $15 per member overage (5 included @ $0)
+                tiers: [
+                    { upTo: 5, unitPrice: 0 }, // Included in plan
+                    { upTo: null, unitPrice: 15 },
+                ],
             },
             devices: {
-                priceId: 'price_1T0ARqPEBowdz9OiDVOhrwEY',
-                meterId: 'mtr_test_61U9YOyuNvWuyOsxw41PEBowdz9Oi79U',
-                unitPrice: 0.12, // $0.12 per device overage
+                priceId: 'price_1T1smBPEBowdz9Oi0xMyFoW6',
+                meterId: 'mtr_test_61UBGfvSjp0qHil2Y41PEBowdz9Oi4oa',
+                unitPrice: 0.12, // $0.12 per device overage (50 included @ $0)
+                tiers: [
+                    { upTo: 50, unitPrice: 0 }, // Included in plan
+                    { upTo: null, unitPrice: 0.12 },
+                ],
             },
         },
     },
@@ -101,28 +109,34 @@ export const PLAN_PRICING = {
         stripePriceId: 'price_1T0ARvPEBowdz9OiakMUiQ36',
         meteredPricing: {
             members: {
-                priceId: 'price_1T0AS4PEBowdz9OierMMwfeZ',
-                meterId: 'mtr_test_61U9YOsC8ZLIAKms641PEBowdz9Oi81Y',
-                // Graduated: $12/0-50, $10/50-100, $8/100+
+                priceId: 'price_1T1smIPEBowdz9OiBVv6jc5T',
+                meterId: 'mtr_test_61UBGfr7dkGp5gWPp41PEBowdz9OiEU4',
+                // Graduated: 10 included @ $0, 11-50 @ $12, 51-100 @ $10, 101+ @ $8
                 tiers: [
+                    { upTo: 10, unitPrice: 0 }, // Included in plan
                     { start: 11, upTo: 50, unitPrice: 12 },
                     { upTo: 100, unitPrice: 10 },
-                    { upTo: null, unitPrice: 8 }, // null = infinity
+                    { upTo: null, unitPrice: 8 },
                 ],
             },
             certificate_authorities: {
-                priceId: 'price_1T0ASAPEBowdz9Oi47B7pmXt',
-                meterId: 'mtr_test_61U9YOygdyg6UVDLS41PEBowdz9Oi532',
-                unitPrice: 50, // $50 per managed CA
+                priceId: 'price_1T1smNPEBowdz9OinqOojxeu',
+                meterId: 'mtr_test_61UBGfwZe3jFXiT4m41PEBowdz9OiKE4',
+                unitPrice: 50, // $50 per managed CA (1 included @ $0)
+                tiers: [
+                    { upTo: 1, unitPrice: 0 }, // Included in plan
+                    { upTo: null, unitPrice: 50 },
+                ],
             },
             devices: {
-                priceId: 'price_1T0ASGPEBowdz9OiyYYIbFI9',
-                meterId: 'mtr_test_61U9YOyuNvWuyOsxw41PEBowdz9Oi79U',
-                // Graduated: $0.10/0-1K, $0.08/1K-10K, $0.05/10K+
+                priceId: 'price_1T1smUPEBowdz9OiszHwUz8X',
+                meterId: 'mtr_test_61UBGfvSjp0qHil2Y41PEBowdz9Oi4oa',
+                // Graduated: 100 included @ $0, 101-1K @ $0.10, 1K-10K @ $0.08, 10K+ @ $0.05
                 tiers: [
+                    { upTo: 100, unitPrice: 0 }, // Included in plan
                     { start: 101, upTo: 1000, unitPrice: 0.1 },
                     { upTo: 10000, unitPrice: 0.08 },
-                    { upTo: null, unitPrice: 0.05 }, // null = infinity
+                    { upTo: null, unitPrice: 0.05 },
                 ],
             },
         },

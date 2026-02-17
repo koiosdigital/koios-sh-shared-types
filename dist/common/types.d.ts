@@ -19,21 +19,7 @@ export declare const BillingAddressSchema: z.ZodObject<{
     state: z.ZodOptional<z.ZodString>;
     postalCode: z.ZodOptional<z.ZodString>;
     country: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    line1: string;
-    city: string;
-    country: string;
-    line2?: string | undefined;
-    state?: string | undefined;
-    postalCode?: string | undefined;
-}, {
-    line1: string;
-    city: string;
-    country: string;
-    line2?: string | undefined;
-    state?: string | undefined;
-    postalCode?: string | undefined;
-}>;
+}, z.core.$strip>;
 export type BillingAddress = z.infer<typeof BillingAddressSchema>;
 /**
  * Supported currencies

@@ -13,27 +13,23 @@ export declare const PlanChangedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"billing.plan_changed">;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
-    oldPlan: z.ZodEnum<["free", "pro", "enterprise"]>;
-    newPlan: z.ZodEnum<["free", "pro", "enterprise"]>;
+    oldPlan: z.ZodEnum<{
+        free: "free";
+        pro: "pro";
+        enterprise: "enterprise";
+    }>;
+    newPlan: z.ZodEnum<{
+        free: "free";
+        pro: "pro";
+        enterprise: "enterprise";
+    }>;
     effectiveDate: z.ZodNumber;
-    reason: z.ZodOptional<z.ZodEnum<["upgrade", "downgrade", "admin_override"]>>;
-}, "strip", z.ZodTypeAny, {
-    type: "billing.plan_changed";
-    timestamp: number;
-    tenantId: string;
-    oldPlan: "free" | "pro" | "enterprise";
-    newPlan: "free" | "pro" | "enterprise";
-    effectiveDate: number;
-    reason?: "upgrade" | "downgrade" | "admin_override" | undefined;
-}, {
-    type: "billing.plan_changed";
-    timestamp: number;
-    tenantId: string;
-    oldPlan: "free" | "pro" | "enterprise";
-    newPlan: "free" | "pro" | "enterprise";
-    effectiveDate: number;
-    reason?: "upgrade" | "downgrade" | "admin_override" | undefined;
-}>;
+    reason: z.ZodOptional<z.ZodEnum<{
+        upgrade: "upgrade";
+        downgrade: "downgrade";
+        admin_override: "admin_override";
+    }>>;
+}, z.core.$strip>;
 export declare const PaymentFailedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"billing.payment_failed">;
     timestamp: z.ZodNumber;
@@ -43,97 +39,53 @@ export declare const PaymentFailedEventSchema: z.ZodObject<{
     currency: z.ZodString;
     attemptCount: z.ZodNumber;
     nextRetryDate: z.ZodOptional<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    type: "billing.payment_failed";
-    timestamp: number;
-    tenantId: string;
-    invoiceId: string;
-    amount: number;
-    currency: string;
-    attemptCount: number;
-    nextRetryDate?: number | undefined;
-}, {
-    type: "billing.payment_failed";
-    timestamp: number;
-    tenantId: string;
-    invoiceId: string;
-    amount: number;
-    currency: string;
-    attemptCount: number;
-    nextRetryDate?: number | undefined;
-}>;
+}, z.core.$strip>;
 export declare const SubscriptionCancelledEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"billing.subscription_cancelled">;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     subscriptionId: z.ZodString;
-    reason: z.ZodEnum<["customer_request", "payment_failed", "admin_action"]>;
+    reason: z.ZodEnum<{
+        customer_request: "customer_request";
+        payment_failed: "payment_failed";
+        admin_action: "admin_action";
+    }>;
     effectiveDate: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    type: "billing.subscription_cancelled";
-    timestamp: number;
-    tenantId: string;
-    reason: "customer_request" | "payment_failed" | "admin_action";
-    effectiveDate: number;
-    subscriptionId: string;
-}, {
-    type: "billing.subscription_cancelled";
-    timestamp: number;
-    tenantId: string;
-    reason: "customer_request" | "payment_failed" | "admin_action";
-    effectiveDate: number;
-    subscriptionId: string;
-}>;
+}, z.core.$strip>;
 export declare const UsageLimitExceededEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"billing.usage_limit_exceeded">;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
-    resource: z.ZodEnum<["members", "certificate_authorities", "devices"]>;
+    resource: z.ZodEnum<{
+        members: "members";
+        certificate_authorities: "certificate_authorities";
+        devices: "devices";
+    }>;
     limit: z.ZodNumber;
     current: z.ZodNumber;
     overage: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    type: "billing.usage_limit_exceeded";
-    timestamp: number;
-    tenantId: string;
-    resource: "members" | "certificate_authorities" | "devices";
-    limit: number;
-    current: number;
-    overage: number;
-}, {
-    type: "billing.usage_limit_exceeded";
-    timestamp: number;
-    tenantId: string;
-    resource: "members" | "certificate_authorities" | "devices";
-    limit: number;
-    current: number;
-    overage: number;
-}>;
-export declare const BillingEventSchema: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
+}, z.core.$strip>;
+export declare const BillingEventSchema: z.ZodDiscriminatedUnion<[z.ZodObject<{
     type: z.ZodLiteral<"billing.plan_changed">;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
-    oldPlan: z.ZodEnum<["free", "pro", "enterprise"]>;
-    newPlan: z.ZodEnum<["free", "pro", "enterprise"]>;
+    oldPlan: z.ZodEnum<{
+        free: "free";
+        pro: "pro";
+        enterprise: "enterprise";
+    }>;
+    newPlan: z.ZodEnum<{
+        free: "free";
+        pro: "pro";
+        enterprise: "enterprise";
+    }>;
     effectiveDate: z.ZodNumber;
-    reason: z.ZodOptional<z.ZodEnum<["upgrade", "downgrade", "admin_override"]>>;
-}, "strip", z.ZodTypeAny, {
-    type: "billing.plan_changed";
-    timestamp: number;
-    tenantId: string;
-    oldPlan: "free" | "pro" | "enterprise";
-    newPlan: "free" | "pro" | "enterprise";
-    effectiveDate: number;
-    reason?: "upgrade" | "downgrade" | "admin_override" | undefined;
-}, {
-    type: "billing.plan_changed";
-    timestamp: number;
-    tenantId: string;
-    oldPlan: "free" | "pro" | "enterprise";
-    newPlan: "free" | "pro" | "enterprise";
-    effectiveDate: number;
-    reason?: "upgrade" | "downgrade" | "admin_override" | undefined;
-}>, z.ZodObject<{
+    reason: z.ZodOptional<z.ZodEnum<{
+        upgrade: "upgrade";
+        downgrade: "downgrade";
+        admin_override: "admin_override";
+    }>>;
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"billing.payment_failed">;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
@@ -142,70 +94,30 @@ export declare const BillingEventSchema: z.ZodDiscriminatedUnion<"type", [z.ZodO
     currency: z.ZodString;
     attemptCount: z.ZodNumber;
     nextRetryDate: z.ZodOptional<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    type: "billing.payment_failed";
-    timestamp: number;
-    tenantId: string;
-    invoiceId: string;
-    amount: number;
-    currency: string;
-    attemptCount: number;
-    nextRetryDate?: number | undefined;
-}, {
-    type: "billing.payment_failed";
-    timestamp: number;
-    tenantId: string;
-    invoiceId: string;
-    amount: number;
-    currency: string;
-    attemptCount: number;
-    nextRetryDate?: number | undefined;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"billing.subscription_cancelled">;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     subscriptionId: z.ZodString;
-    reason: z.ZodEnum<["customer_request", "payment_failed", "admin_action"]>;
+    reason: z.ZodEnum<{
+        customer_request: "customer_request";
+        payment_failed: "payment_failed";
+        admin_action: "admin_action";
+    }>;
     effectiveDate: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    type: "billing.subscription_cancelled";
-    timestamp: number;
-    tenantId: string;
-    reason: "customer_request" | "payment_failed" | "admin_action";
-    effectiveDate: number;
-    subscriptionId: string;
-}, {
-    type: "billing.subscription_cancelled";
-    timestamp: number;
-    tenantId: string;
-    reason: "customer_request" | "payment_failed" | "admin_action";
-    effectiveDate: number;
-    subscriptionId: string;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"billing.usage_limit_exceeded">;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
-    resource: z.ZodEnum<["members", "certificate_authorities", "devices"]>;
+    resource: z.ZodEnum<{
+        members: "members";
+        certificate_authorities: "certificate_authorities";
+        devices: "devices";
+    }>;
     limit: z.ZodNumber;
     current: z.ZodNumber;
     overage: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    type: "billing.usage_limit_exceeded";
-    timestamp: number;
-    tenantId: string;
-    resource: "members" | "certificate_authorities" | "devices";
-    limit: number;
-    current: number;
-    overage: number;
-}, {
-    type: "billing.usage_limit_exceeded";
-    timestamp: number;
-    tenantId: string;
-    resource: "members" | "certificate_authorities" | "devices";
-    limit: number;
-    current: number;
-    overage: number;
-}>]>;
+}, z.core.$strip>], "type">;
 export type PlanChangedEvent = z.infer<typeof PlanChangedEventSchema>;
 export type PaymentFailedEvent = z.infer<typeof PaymentFailedEventSchema>;
 export type SubscriptionCancelledEvent = z.infer<typeof SubscriptionCancelledEventSchema>;

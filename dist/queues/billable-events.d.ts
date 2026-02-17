@@ -18,47 +18,19 @@ export declare const MemberCreatedEventSchema: z.ZodObject<{
     email: z.ZodOptional<z.ZodString>;
     role: z.ZodString;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, "strip", z.ZodTypeAny, {
-    type: "member.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    role: string;
-    email?: string | undefined;
-    metadata?: Record<string, unknown> | undefined;
-}, {
-    type: "member.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    role: string;
-    email?: string | undefined;
-    metadata?: Record<string, unknown> | undefined;
-}>;
+}, z.core.$strip>;
 export declare const MemberRemovedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"member.removed">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     userId: z.ZodString;
-    reason: z.ZodOptional<z.ZodEnum<["deleted", "left", "transferred"]>>;
-}, "strip", z.ZodTypeAny, {
-    type: "member.removed";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    reason?: "deleted" | "left" | "transferred" | undefined;
-}, {
-    type: "member.removed";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    reason?: "deleted" | "left" | "transferred" | undefined;
-}>;
+    reason: z.ZodOptional<z.ZodEnum<{
+        deleted: "deleted";
+        left: "left";
+        transferred: "transferred";
+    }>>;
+}, z.core.$strip>;
 export declare const MemberUpdatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"member.updated">;
     eventId: z.ZodString;
@@ -68,34 +40,8 @@ export declare const MemberUpdatedEventSchema: z.ZodObject<{
     changes: z.ZodObject<{
         role: z.ZodOptional<z.ZodString>;
         status: z.ZodOptional<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        status?: string | undefined;
-        role?: string | undefined;
-    }, {
-        status?: string | undefined;
-        role?: string | undefined;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "member.updated";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    changes: {
-        status?: string | undefined;
-        role?: string | undefined;
-    };
-}, {
-    type: "member.updated";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    changes: {
-        status?: string | undefined;
-        role?: string | undefined;
-    };
-}>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
 export declare const TenantCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"tenant.created">;
     eventId: z.ZodString;
@@ -105,7 +51,11 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
     ownerId: z.ZodString;
     ownerEmail: z.ZodString;
     ownerName: z.ZodString;
-    plan: z.ZodEnum<["free", "pro", "enterprise"]>;
+    plan: z.ZodEnum<{
+        free: "free";
+        pro: "pro";
+        enterprise: "enterprise";
+    }>;
     billingAddress: z.ZodOptional<z.ZodObject<{
         line1: z.ZodString;
         line2: z.ZodOptional<z.ZodString>;
@@ -113,64 +63,10 @@ export declare const TenantCreatedEventSchema: z.ZodObject<{
         state: z.ZodOptional<z.ZodString>;
         postalCode: z.ZodOptional<z.ZodString>;
         country: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        line1: string;
-        city: string;
-        country: string;
-        line2?: string | undefined;
-        state?: string | undefined;
-        postalCode?: string | undefined;
-    }, {
-        line1: string;
-        city: string;
-        country: string;
-        line2?: string | undefined;
-        state?: string | undefined;
-        postalCode?: string | undefined;
-    }>>;
+    }, z.core.$strip>>;
     paymentMethodId: z.ZodOptional<z.ZodString>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, "strip", z.ZodTypeAny, {
-    type: "tenant.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    ownerId: string;
-    ownerEmail: string;
-    ownerName: string;
-    plan: "free" | "pro" | "enterprise";
-    metadata?: Record<string, unknown> | undefined;
-    billingAddress?: {
-        line1: string;
-        city: string;
-        country: string;
-        line2?: string | undefined;
-        state?: string | undefined;
-        postalCode?: string | undefined;
-    } | undefined;
-    paymentMethodId?: string | undefined;
-}, {
-    type: "tenant.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    ownerId: string;
-    ownerEmail: string;
-    ownerName: string;
-    plan: "free" | "pro" | "enterprise";
-    metadata?: Record<string, unknown> | undefined;
-    billingAddress?: {
-        line1: string;
-        city: string;
-        country: string;
-        line2?: string | undefined;
-        state?: string | undefined;
-        postalCode?: string | undefined;
-    } | undefined;
-    paymentMethodId?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const TenantUpdatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"tenant.updated">;
     eventId: z.ZodString;
@@ -179,51 +75,15 @@ export declare const TenantUpdatedEventSchema: z.ZodObject<{
     changes: z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         status: z.ZodOptional<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        status?: string | undefined;
-        name?: string | undefined;
-    }, {
-        status?: string | undefined;
-        name?: string | undefined;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "tenant.updated";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    changes: {
-        status?: string | undefined;
-        name?: string | undefined;
-    };
-}, {
-    type: "tenant.updated";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    changes: {
-        status?: string | undefined;
-        name?: string | undefined;
-    };
-}>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
 export declare const TenantDeletedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"tenant.deleted">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deletedBy: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "tenant.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deletedBy: string;
-}, {
-    type: "tenant.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deletedBy: string;
-}>;
+}, z.core.$strip>;
 export declare const ServiceAccountCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"service_account.created">;
     eventId: z.ZodString;
@@ -231,40 +91,14 @@ export declare const ServiceAccountCreatedEventSchema: z.ZodObject<{
     tenantId: z.ZodString;
     serviceAccountId: z.ZodString;
     name: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "service_account.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    serviceAccountId: string;
-}, {
-    type: "service_account.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    serviceAccountId: string;
-}>;
+}, z.core.$strip>;
 export declare const ServiceAccountDeletedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"service_account.deleted">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     serviceAccountId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "service_account.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    serviceAccountId: string;
-}, {
-    type: "service_account.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    serviceAccountId: string;
-}>;
+}, z.core.$strip>;
 export declare const ApiCallEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"api.call">;
     eventId: z.ZodString;
@@ -274,25 +108,7 @@ export declare const ApiCallEventSchema: z.ZodObject<{
     method: z.ZodString;
     statusCode: z.ZodNumber;
     responseTime: z.ZodOptional<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    type: "api.call";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    endpoint: string;
-    method: string;
-    statusCode: number;
-    responseTime?: number | undefined;
-}, {
-    type: "api.call";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    endpoint: string;
-    method: string;
-    statusCode: number;
-    responseTime?: number | undefined;
-}>;
+}, z.core.$strip>;
 export declare const DeviceCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"device.created">;
     eventId: z.ZodString;
@@ -301,42 +117,14 @@ export declare const DeviceCreatedEventSchema: z.ZodObject<{
     deviceId: z.ZodString;
     name: z.ZodOptional<z.ZodString>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, "strip", z.ZodTypeAny, {
-    type: "device.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deviceId: string;
-    metadata?: Record<string, unknown> | undefined;
-    name?: string | undefined;
-}, {
-    type: "device.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deviceId: string;
-    metadata?: Record<string, unknown> | undefined;
-    name?: string | undefined;
-}>;
+}, z.core.$strip>;
 export declare const DeviceDeletedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"device.deleted">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deviceId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "device.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deviceId: string;
-}, {
-    type: "device.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deviceId: string;
-}>;
+}, z.core.$strip>;
 export declare const CertificateAuthorityCreatedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"certificate_authority.created">;
     eventId: z.ZodString;
@@ -344,47 +132,20 @@ export declare const CertificateAuthorityCreatedEventSchema: z.ZodObject<{
     tenantId: z.ZodString;
     caId: z.ZodString;
     name: z.ZodString;
-    caType: z.ZodEnum<["managed", "byoca"]>;
+    caType: z.ZodEnum<{
+        managed: "managed";
+        byoca: "byoca";
+    }>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, "strip", z.ZodTypeAny, {
-    type: "certificate_authority.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    caId: string;
-    caType: "managed" | "byoca";
-    metadata?: Record<string, unknown> | undefined;
-}, {
-    type: "certificate_authority.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    caId: string;
-    caType: "managed" | "byoca";
-    metadata?: Record<string, unknown> | undefined;
-}>;
+}, z.core.$strip>;
 export declare const CertificateAuthorityDeletedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"certificate_authority.deleted">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     caId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "certificate_authority.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    caId: string;
-}, {
-    type: "certificate_authority.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    caId: string;
-}>;
-export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
+}, z.core.$strip>;
+export declare const BillableEventSchema: z.ZodDiscriminatedUnion<[z.ZodObject<{
     type: z.ZodLiteral<"member.created">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
@@ -393,46 +154,18 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     email: z.ZodOptional<z.ZodString>;
     role: z.ZodString;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, "strip", z.ZodTypeAny, {
-    type: "member.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    role: string;
-    email?: string | undefined;
-    metadata?: Record<string, unknown> | undefined;
-}, {
-    type: "member.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    role: string;
-    email?: string | undefined;
-    metadata?: Record<string, unknown> | undefined;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"member.removed">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     userId: z.ZodString;
-    reason: z.ZodOptional<z.ZodEnum<["deleted", "left", "transferred"]>>;
-}, "strip", z.ZodTypeAny, {
-    type: "member.removed";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    reason?: "deleted" | "left" | "transferred" | undefined;
-}, {
-    type: "member.removed";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    reason?: "deleted" | "left" | "transferred" | undefined;
-}>, z.ZodObject<{
+    reason: z.ZodOptional<z.ZodEnum<{
+        deleted: "deleted";
+        left: "left";
+        transferred: "transferred";
+    }>>;
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"member.updated">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
@@ -441,34 +174,8 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     changes: z.ZodObject<{
         role: z.ZodOptional<z.ZodString>;
         status: z.ZodOptional<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        status?: string | undefined;
-        role?: string | undefined;
-    }, {
-        status?: string | undefined;
-        role?: string | undefined;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "member.updated";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    changes: {
-        status?: string | undefined;
-        role?: string | undefined;
-    };
-}, {
-    type: "member.updated";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    userId: string;
-    changes: {
-        status?: string | undefined;
-        role?: string | undefined;
-    };
-}>, z.ZodObject<{
+    }, z.core.$strip>;
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"tenant.created">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
@@ -477,7 +184,11 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     ownerId: z.ZodString;
     ownerEmail: z.ZodString;
     ownerName: z.ZodString;
-    plan: z.ZodEnum<["free", "pro", "enterprise"]>;
+    plan: z.ZodEnum<{
+        free: "free";
+        pro: "pro";
+        enterprise: "enterprise";
+    }>;
     billingAddress: z.ZodOptional<z.ZodObject<{
         line1: z.ZodString;
         line2: z.ZodOptional<z.ZodString>;
@@ -485,64 +196,10 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
         state: z.ZodOptional<z.ZodString>;
         postalCode: z.ZodOptional<z.ZodString>;
         country: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        line1: string;
-        city: string;
-        country: string;
-        line2?: string | undefined;
-        state?: string | undefined;
-        postalCode?: string | undefined;
-    }, {
-        line1: string;
-        city: string;
-        country: string;
-        line2?: string | undefined;
-        state?: string | undefined;
-        postalCode?: string | undefined;
-    }>>;
+    }, z.core.$strip>>;
     paymentMethodId: z.ZodOptional<z.ZodString>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, "strip", z.ZodTypeAny, {
-    type: "tenant.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    ownerId: string;
-    ownerEmail: string;
-    ownerName: string;
-    plan: "free" | "pro" | "enterprise";
-    metadata?: Record<string, unknown> | undefined;
-    billingAddress?: {
-        line1: string;
-        city: string;
-        country: string;
-        line2?: string | undefined;
-        state?: string | undefined;
-        postalCode?: string | undefined;
-    } | undefined;
-    paymentMethodId?: string | undefined;
-}, {
-    type: "tenant.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    ownerId: string;
-    ownerEmail: string;
-    ownerName: string;
-    plan: "free" | "pro" | "enterprise";
-    metadata?: Record<string, unknown> | undefined;
-    billingAddress?: {
-        line1: string;
-        city: string;
-        country: string;
-        line2?: string | undefined;
-        state?: string | undefined;
-        postalCode?: string | undefined;
-    } | undefined;
-    paymentMethodId?: string | undefined;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"tenant.updated">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
@@ -550,89 +207,27 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     changes: z.ZodObject<{
         name: z.ZodOptional<z.ZodString>;
         status: z.ZodOptional<z.ZodString>;
-    }, "strip", z.ZodTypeAny, {
-        status?: string | undefined;
-        name?: string | undefined;
-    }, {
-        status?: string | undefined;
-        name?: string | undefined;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "tenant.updated";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    changes: {
-        status?: string | undefined;
-        name?: string | undefined;
-    };
-}, {
-    type: "tenant.updated";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    changes: {
-        status?: string | undefined;
-        name?: string | undefined;
-    };
-}>, z.ZodObject<{
+    }, z.core.$strip>;
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"tenant.deleted">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deletedBy: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "tenant.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deletedBy: string;
-}, {
-    type: "tenant.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deletedBy: string;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"service_account.created">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     serviceAccountId: z.ZodString;
     name: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "service_account.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    serviceAccountId: string;
-}, {
-    type: "service_account.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    serviceAccountId: string;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"service_account.deleted">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     serviceAccountId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "service_account.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    serviceAccountId: string;
-}, {
-    type: "service_account.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    serviceAccountId: string;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"api.call">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
@@ -641,25 +236,7 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     method: z.ZodString;
     statusCode: z.ZodNumber;
     responseTime: z.ZodOptional<z.ZodNumber>;
-}, "strip", z.ZodTypeAny, {
-    type: "api.call";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    endpoint: string;
-    method: string;
-    statusCode: number;
-    responseTime?: number | undefined;
-}, {
-    type: "api.call";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    endpoint: string;
-    method: string;
-    statusCode: number;
-    responseTime?: number | undefined;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"device.created">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
@@ -667,86 +244,31 @@ export declare const BillableEventSchema: z.ZodDiscriminatedUnion<"type", [z.Zod
     deviceId: z.ZodString;
     name: z.ZodOptional<z.ZodString>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, "strip", z.ZodTypeAny, {
-    type: "device.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deviceId: string;
-    metadata?: Record<string, unknown> | undefined;
-    name?: string | undefined;
-}, {
-    type: "device.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deviceId: string;
-    metadata?: Record<string, unknown> | undefined;
-    name?: string | undefined;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"device.deleted">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     deviceId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "device.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deviceId: string;
-}, {
-    type: "device.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    deviceId: string;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"certificate_authority.created">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     caId: z.ZodString;
     name: z.ZodString;
-    caType: z.ZodEnum<["managed", "byoca"]>;
+    caType: z.ZodEnum<{
+        managed: "managed";
+        byoca: "byoca";
+    }>;
     metadata: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, "strip", z.ZodTypeAny, {
-    type: "certificate_authority.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    caId: string;
-    caType: "managed" | "byoca";
-    metadata?: Record<string, unknown> | undefined;
-}, {
-    type: "certificate_authority.created";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    name: string;
-    caId: string;
-    caType: "managed" | "byoca";
-    metadata?: Record<string, unknown> | undefined;
-}>, z.ZodObject<{
+}, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"certificate_authority.deleted">;
     eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     caId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    type: "certificate_authority.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    caId: string;
-}, {
-    type: "certificate_authority.deleted";
-    eventId: string;
-    timestamp: number;
-    tenantId: string;
-    caId: string;
-}>]>;
+}, z.core.$strip>], "type">;
 export type MemberCreatedEvent = z.infer<typeof MemberCreatedEventSchema>;
 export type MemberRemovedEvent = z.infer<typeof MemberRemovedEventSchema>;
 export type MemberUpdatedEvent = z.infer<typeof MemberUpdatedEventSchema>;

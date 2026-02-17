@@ -21,7 +21,7 @@ export const MemberCreatedEventSchema = z.object({
     userId: z.string(),
     email: z.string().optional(),
     role: z.string(),
-    metadata: z.record(z.unknown()).optional(),
+    metadata: z.record(z.string(), z.unknown()).optional(),
 });
 export const MemberRemovedEventSchema = z.object({
     type: z.literal('member.removed'),
