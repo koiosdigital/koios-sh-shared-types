@@ -6,11 +6,18 @@
  *
  * Queue: koios-billing-events
  * Producer: Billing service
- * Consumer: Auth service, Notifications service, Analytics service
+ * Consumer: koios-billing-events-fanout dispatcher → per-service queues
+ *           (auth, pki, ...). A Cloudflare queue has one consumer, so the
+ *           dispatcher fans each event out to one queue per subscriber.
+ *
+ * Idempotency: every event carries a unique `eventId`. Because delivery is
+ * at-least-once and fan-out can duplicate on retry, consumers MUST dedupe on
+ * `eventId` (e.g. a processed_events table) before mutating their database.
  */
 import { z } from 'zod';
 export declare const PlanChangedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"billing.plan_changed">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     oldPlan: z.ZodEnum<{
@@ -32,6 +39,7 @@ export declare const PlanChangedEventSchema: z.ZodObject<{
 }, z.core.$strip>;
 export declare const PaymentFailedEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"billing.payment_failed">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     invoiceId: z.ZodString;
@@ -42,6 +50,7 @@ export declare const PaymentFailedEventSchema: z.ZodObject<{
 }, z.core.$strip>;
 export declare const SubscriptionCancelledEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"billing.subscription_cancelled">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     subscriptionId: z.ZodString;
@@ -54,6 +63,7 @@ export declare const SubscriptionCancelledEventSchema: z.ZodObject<{
 }, z.core.$strip>;
 export declare const UsageLimitExceededEventSchema: z.ZodObject<{
     type: z.ZodLiteral<"billing.usage_limit_exceeded">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     resource: z.ZodEnum<{
@@ -67,6 +77,7 @@ export declare const UsageLimitExceededEventSchema: z.ZodObject<{
 }, z.core.$strip>;
 export declare const BillingEventSchema: z.ZodDiscriminatedUnion<[z.ZodObject<{
     type: z.ZodLiteral<"billing.plan_changed">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     oldPlan: z.ZodEnum<{
@@ -87,6 +98,7 @@ export declare const BillingEventSchema: z.ZodDiscriminatedUnion<[z.ZodObject<{
     }>>;
 }, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"billing.payment_failed">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     invoiceId: z.ZodString;
@@ -96,6 +108,7 @@ export declare const BillingEventSchema: z.ZodDiscriminatedUnion<[z.ZodObject<{
     nextRetryDate: z.ZodOptional<z.ZodNumber>;
 }, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"billing.subscription_cancelled">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     subscriptionId: z.ZodString;
@@ -107,6 +120,7 @@ export declare const BillingEventSchema: z.ZodDiscriminatedUnion<[z.ZodObject<{
     effectiveDate: z.ZodNumber;
 }, z.core.$strip>, z.ZodObject<{
     type: z.ZodLiteral<"billing.usage_limit_exceeded">;
+    eventId: z.ZodString;
     timestamp: z.ZodNumber;
     tenantId: z.ZodString;
     resource: z.ZodEnum<{
@@ -123,10 +137,10 @@ export type PaymentFailedEvent = z.infer<typeof PaymentFailedEventSchema>;
 export type SubscriptionCancelledEvent = z.infer<typeof SubscriptionCancelledEventSchema>;
 export type UsageLimitExceededEvent = z.infer<typeof UsageLimitExceededEventSchema>;
 export type BillingEvent = z.infer<typeof BillingEventSchema>;
-export declare function createPlanChangedEvent(data: Omit<PlanChangedEvent, 'type' | 'timestamp'>): PlanChangedEvent;
-export declare function createPaymentFailedEvent(data: Omit<PaymentFailedEvent, 'type' | 'timestamp'>): PaymentFailedEvent;
-export declare function createSubscriptionCancelledEvent(data: Omit<SubscriptionCancelledEvent, 'type' | 'timestamp'>): SubscriptionCancelledEvent;
-export declare function createUsageLimitExceededEvent(data: Omit<UsageLimitExceededEvent, 'type' | 'timestamp'>): UsageLimitExceededEvent;
+export declare function createPlanChangedEvent(data: Omit<PlanChangedEvent, 'type' | 'eventId' | 'timestamp'>): PlanChangedEvent;
+export declare function createPaymentFailedEvent(data: Omit<PaymentFailedEvent, 'type' | 'eventId' | 'timestamp'>): PaymentFailedEvent;
+export declare function createSubscriptionCancelledEvent(data: Omit<SubscriptionCancelledEvent, 'type' | 'eventId' | 'timestamp'>): SubscriptionCancelledEvent;
+export declare function createUsageLimitExceededEvent(data: Omit<UsageLimitExceededEvent, 'type' | 'eventId' | 'timestamp'>): UsageLimitExceededEvent;
 /**
  * Validate and parse incoming billing event from queue
  */

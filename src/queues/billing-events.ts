@@ -6,7 +6,13 @@
  *
  * Queue: koios-billing-events
  * Producer: Billing service
- * Consumer: Auth service, Notifications service, Analytics service
+ * Consumer: koios-billing-events-fanout dispatcher → per-service queues
+ *           (auth, pki, ...). A Cloudflare queue has one consumer, so the
+ *           dispatcher fans each event out to one queue per subscriber.
+ *
+ * Idempotency: every event carries a unique `eventId`. Because delivery is
+ * at-least-once and fan-out can duplicate on retry, consumers MUST dedupe on
+ * `eventId` (e.g. a processed_events table) before mutating their database.
  */
 
 import { z } from 'zod'
@@ -18,6 +24,7 @@ import { PLANS, BILLABLE_RESOURCES } from '../common/types'
 
 export const PlanChangedEventSchema = z.object({
   type: z.literal('billing.plan_changed'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   oldPlan: z.enum(PLANS),
@@ -28,6 +35,7 @@ export const PlanChangedEventSchema = z.object({
 
 export const PaymentFailedEventSchema = z.object({
   type: z.literal('billing.payment_failed'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   invoiceId: z.string(),
@@ -39,6 +47,7 @@ export const PaymentFailedEventSchema = z.object({
 
 export const SubscriptionCancelledEventSchema = z.object({
   type: z.literal('billing.subscription_cancelled'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   subscriptionId: z.string(),
@@ -48,6 +57,7 @@ export const SubscriptionCancelledEventSchema = z.object({
 
 export const UsageLimitExceededEventSchema = z.object({
   type: z.literal('billing.usage_limit_exceeded'),
+  eventId: z.string().uuid(),
   timestamp: z.number(),
   tenantId: z.string(),
   resource: z.enum(BILLABLE_RESOURCES),
@@ -83,40 +93,44 @@ export type BillingEvent = z.infer<typeof BillingEventSchema>
 // ====================
 
 export function createPlanChangedEvent(
-  data: Omit<PlanChangedEvent, 'type' | 'timestamp'>
+  data: Omit<PlanChangedEvent, 'type' | 'eventId' | 'timestamp'>
 ): PlanChangedEvent {
   return {
     type: 'billing.plan_changed',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createPaymentFailedEvent(
-  data: Omit<PaymentFailedEvent, 'type' | 'timestamp'>
+  data: Omit<PaymentFailedEvent, 'type' | 'eventId' | 'timestamp'>
 ): PaymentFailedEvent {
   return {
     type: 'billing.payment_failed',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createSubscriptionCancelledEvent(
-  data: Omit<SubscriptionCancelledEvent, 'type' | 'timestamp'>
+  data: Omit<SubscriptionCancelledEvent, 'type' | 'eventId' | 'timestamp'>
 ): SubscriptionCancelledEvent {
   return {
     type: 'billing.subscription_cancelled',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
 }
 
 export function createUsageLimitExceededEvent(
-  data: Omit<UsageLimitExceededEvent, 'type' | 'timestamp'>
+  data: Omit<UsageLimitExceededEvent, 'type' | 'eventId' | 'timestamp'>
 ): UsageLimitExceededEvent {
   return {
     type: 'billing.usage_limit_exceeded',
+    eventId: crypto.randomUUID(),
     timestamp: Date.now(),
     ...data,
   }
