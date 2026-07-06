@@ -38,9 +38,9 @@ export const PLAN_LIMITS = {
         devices: 50,
     },
     enterprise: {
-        members: 10,
-        certificate_authorities: 1,
-        devices: 100,
+        members: 10, // 10 included; graduated overage above (11-50 $12, 51-100 $10, 101+ $8)
+        certificate_authorities: 1, // 1 managed CA included; $50 each above. BYOCA (self-hosted) is unlimited via the byoca feature
+        devices: 100, // 100 included; graduated overage above (101-1K $0.10, 1K-10K $0.08, 10K+ $0.05)
     },
 };
 /**
