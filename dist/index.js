@@ -34,4 +34,16 @@ PlanChangedEventSchema, PaymentFailedEventSchema, SubscriptionCancelledEventSche
 createPlanChangedEvent, createPaymentFailedEvent, createSubscriptionCancelledEvent, createUsageLimitExceededEvent, 
 // Parser
 parseBillingEvent, } from './queues/billing-events';
+// ====================
+// Audit Events (koios-audit-events queue)
+// ====================
+export { 
+// Constants
+KNOWN_AUDIT_SERVICES, 
+// Schemas
+AuditActorSchema, AuditActionEventSchema, AuditEventSchema, 
+// Event Creators
+createAuditActionEvent, 
+// Parser
+parseAuditEvent, } from './queues/audit-events';
 //# sourceMappingURL=index.js.map

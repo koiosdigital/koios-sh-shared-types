@@ -14,5 +14,7 @@ export { MemberCreatedEventSchema, MemberRemovedEventSchema, MemberUpdatedEventS
 export type { MemberCreatedEvent, MemberRemovedEvent, MemberUpdatedEvent, TenantCreatedEvent, TenantUpdatedEvent, TenantDeletedEvent, ServiceAccountCreatedEvent, ServiceAccountDeletedEvent, ApiCallEvent, DeviceCreatedEvent, DeviceDeletedEvent, CertificateAuthorityCreatedEvent, CertificateAuthorityDeletedEvent, BillableEvent, } from './queues/billable-events';
 export { PlanChangedEventSchema, PaymentFailedEventSchema, SubscriptionCancelledEventSchema, UsageLimitExceededEventSchema, BillingEventSchema, createPlanChangedEvent, createPaymentFailedEvent, createSubscriptionCancelledEvent, createUsageLimitExceededEvent, parseBillingEvent, } from './queues/billing-events';
 export type { PlanChangedEvent, PaymentFailedEvent, SubscriptionCancelledEvent, UsageLimitExceededEvent, BillingEvent, } from './queues/billing-events';
+export { KNOWN_AUDIT_SERVICES, AuditActorSchema, AuditActionEventSchema, AuditEventSchema, createAuditActionEvent, parseAuditEvent, } from './queues/audit-events';
+export type { KnownAuditService, AuditActor, AuditActionEvent, AuditEvent, } from './queues/audit-events';
 export type { PasswordResetPayload, WelcomePayload, BackupCodesPayload, VerifyEmailPayload, OrganizationInvitePayload, EmailQueueMessage, EmailType, } from './queues/koios-email';
 //# sourceMappingURL=index.d.ts.map

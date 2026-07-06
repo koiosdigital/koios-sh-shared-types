@@ -131,6 +131,33 @@ export type {
 } from './queues/billing-events'
 
 // ====================
+// Audit Events (koios-audit-events queue)
+// ====================
+
+export {
+  // Constants
+  KNOWN_AUDIT_SERVICES,
+
+  // Schemas
+  AuditActorSchema,
+  AuditActionEventSchema,
+  AuditEventSchema,
+
+  // Event Creators
+  createAuditActionEvent,
+
+  // Parser
+  parseAuditEvent,
+} from './queues/audit-events'
+
+export type {
+  KnownAuditService,
+  AuditActor,
+  AuditActionEvent,
+  AuditEvent,
+} from './queues/audit-events'
+
+// ====================
 // Email Events (koios-email queue)
 // ====================
 

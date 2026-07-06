@@ -14,6 +14,10 @@
       "import": "./dist/queues/billable-events.js",
       "types": "./dist/queues/billable-events.d.ts"
     },
+    "./audit-events": {
+      "import": "./dist/queues/audit-events.js",
+      "types": "./dist/queues/audit-events.d.ts"
+    },
     "./billing-events": {
       "import": "./dist/queues/billing-events.js",
       "types": "./dist/queues/billing-events.d.ts"
