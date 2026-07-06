@@ -37,6 +37,21 @@ export type {
 } from './common/types'
 
 // ====================
+// Device Tokens (dnet-minted device JWTs)
+// ====================
+
+export {
+  DNET_ISSUER_URL,
+  DNET_DEVICE_AUDIENCE,
+  DEVICE_CAPS,
+  DEFAULT_DEVICE_CAPS,
+  DeviceCapSchema,
+  DeviceTokenClaimsSchema,
+} from './common/device-token'
+
+export type { DeviceCap, DeviceTokenClaims } from './common/device-token'
+
+// ====================
 // Permissions
 // ====================
 

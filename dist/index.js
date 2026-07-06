@@ -11,6 +11,10 @@
 // ====================
 export { PLANS, BILLABLE_RESOURCES, PLAN_LIMITS, PLAN_FEATURES, PLAN_PRICING, PLANS_CONFIG, BillingAddressSchema, } from './common/types';
 // ====================
+// Device Tokens (dnet-minted device JWTs)
+// ====================
+export { DNET_ISSUER_URL, DNET_DEVICE_AUDIENCE, DEVICE_CAPS, DEFAULT_DEVICE_CAPS, DeviceCapSchema, DeviceTokenClaimsSchema, } from './common/device-token';
+// ====================
 // Permissions
 // ====================
 export { PERMISSIONS } from './common/permissions';
