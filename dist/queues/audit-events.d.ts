@@ -17,7 +17,7 @@ import { z } from 'zod';
  * services are accepted by the deployed audit consumer without a
  * shared-types bump.
  */
-export declare const KNOWN_AUDIT_SERVICES: readonly ["pki", "app-updates", "device", "auth", "billing"];
+export declare const KNOWN_AUDIT_SERVICES: readonly ["pki", "app-updates", "iot", "auth", "billing"];
 export type KnownAuditService = (typeof KNOWN_AUDIT_SERVICES)[number];
 export declare const AuditActorSchema: z.ZodObject<{
     type: z.ZodEnum<{

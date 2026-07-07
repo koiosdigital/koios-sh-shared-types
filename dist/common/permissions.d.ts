@@ -10,20 +10,20 @@
  * All available permissions in the system
  */
 export declare const PERMISSIONS: readonly [{
-    readonly id: "devices.read";
-    readonly resource: "devices";
+    readonly id: "iot.read";
+    readonly resource: "iot";
     readonly action: "read";
-    readonly description: "View devices";
+    readonly description: "View IoT fleets and devices";
 }, {
-    readonly id: "devices.write";
-    readonly resource: "devices";
+    readonly id: "iot.write";
+    readonly resource: "iot";
     readonly action: "write";
-    readonly description: "Create and update devices";
+    readonly description: "Provision and update IoT devices";
 }, {
-    readonly id: "devices.delete";
-    readonly resource: "devices";
+    readonly id: "iot.delete";
+    readonly resource: "iot";
     readonly action: "delete";
-    readonly description: "Delete devices";
+    readonly description: "Delete IoT devices";
 }, {
     readonly id: "firmware.read";
     readonly resource: "firmware";

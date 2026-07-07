@@ -23,7 +23,7 @@ import { z } from 'zod'
  * services are accepted by the deployed audit consumer without a
  * shared-types bump.
  */
-export const KNOWN_AUDIT_SERVICES = ['pki', 'app-updates', 'device', 'auth', 'billing'] as const
+export const KNOWN_AUDIT_SERVICES = ['pki', 'app-updates', 'iot', 'auth', 'billing'] as const
 
 export type KnownAuditService = (typeof KNOWN_AUDIT_SERVICES)[number]
 

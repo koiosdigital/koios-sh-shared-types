@@ -11,14 +11,14 @@
  * All available permissions in the system
  */
 export const PERMISSIONS = [
-  { id: 'devices.read', resource: 'devices', action: 'read', description: 'View devices' },
+  { id: 'iot.read', resource: 'iot', action: 'read', description: 'View IoT fleets and devices' },
   {
-    id: 'devices.write',
-    resource: 'devices',
+    id: 'iot.write',
+    resource: 'iot',
     action: 'write',
-    description: 'Create and update devices',
+    description: 'Provision and update IoT devices',
   },
-  { id: 'devices.delete', resource: 'devices', action: 'delete', description: 'Delete devices' },
+  { id: 'iot.delete', resource: 'iot', action: 'delete', description: 'Delete IoT devices' },
   { id: 'firmware.read', resource: 'firmware', action: 'read', description: 'View firmware' },
   {
     id: 'firmware.write',
