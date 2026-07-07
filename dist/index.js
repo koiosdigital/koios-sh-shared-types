@@ -15,6 +15,10 @@ export { PLANS, BILLABLE_RESOURCES, PLAN_LIMITS, PLAN_FEATURES, PLAN_PRICING, PL
 // ====================
 export { DNET_ISSUER_URL, DNET_DEVICE_AUDIENCE, DEVICE_CAPS, DEFAULT_DEVICE_CAPS, DeviceCapSchema, DeviceTokenClaimsSchema, } from './common/device-token';
 // ====================
+// IoT Webhook Events (dnet -> tenant webhooks)
+// ====================
+export { WEBHOOK_EVENT_WILDCARD, WEBHOOK_EVENTS, WebhookEventSubscriptionSchema, } from './common/webhook-events';
+// ====================
 // Permissions
 // ====================
 export { PERMISSIONS } from './common/permissions';

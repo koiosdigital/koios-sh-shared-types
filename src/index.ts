@@ -52,6 +52,18 @@ export {
 export type { DeviceCap, DeviceTokenClaims } from './common/device-token'
 
 // ====================
+// IoT Webhook Events (dnet -> tenant webhooks)
+// ====================
+
+export {
+  WEBHOOK_EVENT_WILDCARD,
+  WEBHOOK_EVENTS,
+  WebhookEventSubscriptionSchema,
+} from './common/webhook-events'
+
+export type { WebhookEvent, WebhookEventSubscription } from './common/webhook-events'
+
+// ====================
 // Permissions
 // ====================
 
