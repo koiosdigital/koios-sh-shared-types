@@ -1,10 +1,10 @@
 /**
  * Device Token Claims
  *
- * Short-lived scoped JWTs minted by the device gateway (dnet) when a device
+ * Short-lived scoped JWTs minted by the device gateway (vn) when a device
  * proves its identity (edge mTLS or API key). Downstream device-facing
  * resource servers (twin, telemetry ingest, firmware/OTA) verify these
- * against dnet's JWKS and authorize per-capability — they never see the
+ * against vn's JWKS and authorize per-capability — they never see the
  * underlying certificate or API key.
  *
  * One audience is shared by ALL device-facing services; per-service
@@ -13,11 +13,11 @@
 
 import { z } from 'zod'
 
-/** Issuer URL — dnet publishes its JWKS at `${DNET_ISSUER_URL}/.well-known/jwks.json`. */
-export const DNET_ISSUER_URL = 'https://vn.koios.sh'
+/** Issuer URL — vn publishes its JWKS at `${VN_ISSUER_URL}/.well-known/jwks.json`. */
+export const VN_ISSUER_URL = 'https://vn.koios.sh'
 
 /** Single audience for every device-facing resource server. */
-export const DNET_DEVICE_AUDIENCE = 'koios-devices'
+export const VN_DEVICE_AUDIENCE = 'koios-devices'
 
 /**
  * Device capabilities — what a device token is allowed to do.
@@ -46,11 +46,11 @@ export const DEFAULT_DEVICE_CAPS: DeviceCap[] = [
 ]
 
 /**
- * Claims carried by a dnet-minted device JWT (ES256, ~15 min TTL).
+ * Claims carried by a vn-minted device JWT (ES256, ~15 min TTL).
  */
 export const DeviceTokenClaimsSchema = z.object({
   iss: z.string(),
-  aud: z.literal(DNET_DEVICE_AUDIENCE),
+  aud: z.literal(VN_DEVICE_AUDIENCE),
   /** Device id (registry primary key). */
   sub: z.string(),
   tenant_id: z.string(),

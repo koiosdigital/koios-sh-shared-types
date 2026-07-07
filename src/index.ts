@@ -37,12 +37,12 @@ export type {
 } from './common/types'
 
 // ====================
-// Device Tokens (dnet-minted device JWTs)
+// Device Tokens (vn-minted device JWTs)
 // ====================
 
 export {
-  DNET_ISSUER_URL,
-  DNET_DEVICE_AUDIENCE,
+  VN_ISSUER_URL,
+  VN_DEVICE_AUDIENCE,
   DEVICE_CAPS,
   DEFAULT_DEVICE_CAPS,
   DeviceCapSchema,
@@ -52,7 +52,7 @@ export {
 export type { DeviceCap, DeviceTokenClaims } from './common/device-token'
 
 // ====================
-// IoT Webhook Events (dnet -> tenant webhooks)
+// IoT Webhook Events (vn -> tenant webhooks)
 // ====================
 
 export {
