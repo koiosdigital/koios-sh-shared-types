@@ -8,8 +8,10 @@
  */
 export { PLANS, BILLABLE_RESOURCES, PLAN_LIMITS, PLAN_FEATURES, PLAN_PRICING, PLANS_CONFIG, BillingAddressSchema, } from './common/types';
 export type { Plan, Currency, BillableResource, SubscriptionStatus, TenantStatus, FeatureGates, PlanLimits, PlanConfig, PricingTier, MeteredPricing, PlanPricing, BillingAddress, } from './common/types';
-export { DNET_ISSUER_URL, DNET_DEVICE_AUDIENCE, DEVICE_CAPS, DEFAULT_DEVICE_CAPS, DeviceCapSchema, DeviceTokenClaimsSchema, } from './common/device-token';
+export { VN_ISSUER_URL, VN_DEVICE_AUDIENCE, DEVICE_CAPS, DEFAULT_DEVICE_CAPS, DeviceCapSchema, DeviceTokenClaimsSchema, } from './common/device-token';
 export type { DeviceCap, DeviceTokenClaims } from './common/device-token';
+export { DEVICE_MODULES, KNOWN_DEVICE_CLASSES, isKnownDeviceClass, } from './common/device-classes';
+export type { DeviceModule } from './common/device-classes';
 export { WEBHOOK_EVENT_WILDCARD, WEBHOOK_EVENTS, WebhookEventSubscriptionSchema, } from './common/webhook-events';
 export type { WebhookEvent, WebhookEventSubscription } from './common/webhook-events';
 export { PERMISSIONS } from './common/permissions';

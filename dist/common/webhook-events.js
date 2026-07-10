@@ -1,11 +1,11 @@
 /**
  * IoT Webhook Event Types
  *
- * Every event the device gateway (dnet) can POST to a tenant webhook. The
+ * Every event the device gateway (vn) can POST to a tenant webhook. The
  * gateway delivers an event to a webhook when the webhook subscribes to that
  * event name or to the wildcard.
  *
- * Adding an event here is the contract change; dnet's emit() and the console's
+ * Adding an event here is the contract change; vn's emit() and the console's
  * event picker both derive from this list.
  */
 import { z } from 'zod';

@@ -11,11 +11,15 @@
 // ====================
 export { PLANS, BILLABLE_RESOURCES, PLAN_LIMITS, PLAN_FEATURES, PLAN_PRICING, PLANS_CONFIG, BillingAddressSchema, } from './common/types';
 // ====================
-// Device Tokens (dnet-minted device JWTs)
+// Device Tokens (vn-minted device JWTs)
 // ====================
-export { DNET_ISSUER_URL, DNET_DEVICE_AUDIENCE, DEVICE_CAPS, DEFAULT_DEVICE_CAPS, DeviceCapSchema, DeviceTokenClaimsSchema, } from './common/device-token';
+export { VN_ISSUER_URL, VN_DEVICE_AUDIENCE, DEVICE_CAPS, DEFAULT_DEVICE_CAPS, DeviceCapSchema, DeviceTokenClaimsSchema, } from './common/device-token';
 // ====================
-// IoT Webhook Events (dnet -> tenant webhooks)
+// Device Modules (canonical known device-class list)
+// ====================
+export { DEVICE_MODULES, KNOWN_DEVICE_CLASSES, isKnownDeviceClass, } from './common/device-classes';
+// ====================
+// IoT Webhook Events (vn -> tenant webhooks)
 // ====================
 export { WEBHOOK_EVENT_WILDCARD, WEBHOOK_EVENTS, WebhookEventSubscriptionSchema, } from './common/webhook-events';
 // ====================
