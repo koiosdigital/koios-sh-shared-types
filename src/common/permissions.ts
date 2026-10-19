@@ -99,6 +99,19 @@ export const PERMISSIONS = [
     action: 'ca.manage',
     description: 'Roll, retire, and revoke CAs',
   },
+  // Live Updates (app-updates service)
+  {
+    id: 'updates.read',
+    resource: 'updates',
+    action: 'read',
+    description: 'View Live Updates apps, bundles, tracks, devices and signing keys',
+  },
+  {
+    id: 'updates.manage',
+    resource: 'updates',
+    action: 'manage',
+    description: 'Manage Live Updates apps, bundles, releases, groups and signing keys',
+  },
   // RBAC management permissions
   { id: 'rbac.groups.read', resource: 'rbac', action: 'groups.read', description: 'View groups' },
   {

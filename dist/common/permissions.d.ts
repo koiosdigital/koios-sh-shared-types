@@ -125,6 +125,16 @@ export declare const PERMISSIONS: readonly [{
     readonly action: "ca.manage";
     readonly description: "Roll, retire, and revoke CAs";
 }, {
+    readonly id: "updates.read";
+    readonly resource: "updates";
+    readonly action: "read";
+    readonly description: "View Live Updates apps, bundles, tracks, devices and signing keys";
+}, {
+    readonly id: "updates.manage";
+    readonly resource: "updates";
+    readonly action: "manage";
+    readonly description: "Manage Live Updates apps, bundles, releases, groups and signing keys";
+}, {
     readonly id: "rbac.groups.read";
     readonly resource: "rbac";
     readonly action: "groups.read";
