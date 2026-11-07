@@ -95,6 +95,16 @@ export declare const PERMISSIONS: readonly [{
     readonly action: "export";
     readonly description: "Export audit logs";
 }, {
+    readonly id: "logs.read";
+    readonly resource: "logs";
+    readonly action: "read";
+    readonly description: "View device logs";
+}, {
+    readonly id: "logs.export";
+    readonly resource: "logs";
+    readonly action: "export";
+    readonly description: "Export device logs";
+}, {
     readonly id: "pki.read";
     readonly resource: "pki";
     readonly action: "read";

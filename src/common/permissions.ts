@@ -68,6 +68,8 @@ export const PERMISSIONS = [
   { id: 'tenant.sso', resource: 'tenant', action: 'sso', description: 'Configure SSO connections' },
   { id: 'audit.read', resource: 'audit', action: 'read', description: 'View audit logs' },
   { id: 'audit.export', resource: 'audit', action: 'export', description: 'Export audit logs' },
+  { id: 'logs.read', resource: 'logs', action: 'read', description: 'View device logs' },
+  { id: 'logs.export', resource: 'logs', action: 'export', description: 'Export device logs' },
   {
     id: 'pki.read',
     resource: 'pki',
