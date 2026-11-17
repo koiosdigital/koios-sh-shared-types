@@ -58,10 +58,11 @@ export type { DeviceCap, DeviceTokenClaims } from './common/device-token'
 export {
   DEVICE_MODULES,
   KNOWN_DEVICE_CLASSES,
+  deviceModulesOf,
   isKnownDeviceClass,
 } from './common/device-classes'
 
-export type { DeviceModule } from './common/device-classes'
+export type { DeviceFamily, DeviceModule } from './common/device-classes'
 
 // ====================
 // IoT Webhook Events (vn -> tenant webhooks)

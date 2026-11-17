@@ -10,8 +10,8 @@ export { PLANS, BILLABLE_RESOURCES, PLAN_LIMITS, PLAN_FEATURES, PLAN_PRICING, PL
 export type { Plan, Currency, BillableResource, SubscriptionStatus, TenantStatus, FeatureGates, PlanLimits, PlanConfig, PricingTier, MeteredPricing, PlanPricing, BillingAddress, } from './common/types';
 export { VN_ISSUER_URL, VN_DEVICE_AUDIENCE, DEVICE_CAPS, DEFAULT_DEVICE_CAPS, DeviceCapSchema, DeviceTokenClaimsSchema, } from './common/device-token';
 export type { DeviceCap, DeviceTokenClaims } from './common/device-token';
-export { DEVICE_MODULES, KNOWN_DEVICE_CLASSES, isKnownDeviceClass, } from './common/device-classes';
-export type { DeviceModule } from './common/device-classes';
+export { DEVICE_MODULES, KNOWN_DEVICE_CLASSES, deviceModulesOf, isKnownDeviceClass, } from './common/device-classes';
+export type { DeviceFamily, DeviceModule } from './common/device-classes';
 export { WEBHOOK_EVENT_WILDCARD, WEBHOOK_EVENTS, WebhookEventSubscriptionSchema, } from './common/webhook-events';
 export type { WebhookEvent, WebhookEventSubscription } from './common/webhook-events';
 export { PERMISSIONS } from './common/permissions';

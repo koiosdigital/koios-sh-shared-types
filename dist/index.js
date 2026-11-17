@@ -17,7 +17,7 @@ export { VN_ISSUER_URL, VN_DEVICE_AUDIENCE, DEVICE_CAPS, DEFAULT_DEVICE_CAPS, De
 // ====================
 // Device Modules (canonical known device-class list)
 // ====================
-export { DEVICE_MODULES, KNOWN_DEVICE_CLASSES, isKnownDeviceClass, } from './common/device-classes';
+export { DEVICE_MODULES, KNOWN_DEVICE_CLASSES, deviceModulesOf, isKnownDeviceClass, } from './common/device-classes';
 // ====================
 // IoT Webhook Events (vn -> tenant webhooks)
 // ====================
