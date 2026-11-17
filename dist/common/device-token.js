@@ -27,6 +27,11 @@ export const DEVICE_CAPS = [
     'telemetry.write',
     'ota.download',
     'logs.write',
+    // The device may be reached by a console session relayed through the
+    // gateway. Never in the default set: a fleet opts in by naming it in
+    // `default_caps`. Without it the control plane refuses to open a session and
+    // the gateway refuses the device's session socket.
+    'console',
 ];
 export const DeviceCapSchema = z.enum(DEVICE_CAPS);
 /** Caps minted when the fleet does not configure `default_caps`. */

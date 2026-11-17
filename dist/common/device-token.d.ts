@@ -21,7 +21,7 @@ export declare const VN_DEVICE_AUDIENCE = "koios-devices";
  * default below). Per-device overrides are intentionally not supported;
  * revocation is `devices.status = 'revoked'`.
  */
-export declare const DEVICE_CAPS: readonly ["twin.read", "twin.report", "telemetry.write", "ota.download", "logs.write"];
+export declare const DEVICE_CAPS: readonly ["twin.read", "twin.report", "telemetry.write", "ota.download", "logs.write", "console"];
 export type DeviceCap = (typeof DEVICE_CAPS)[number];
 export declare const DeviceCapSchema: z.ZodEnum<{
     "twin.read": "twin.read";
@@ -29,6 +29,7 @@ export declare const DeviceCapSchema: z.ZodEnum<{
     "telemetry.write": "telemetry.write";
     "ota.download": "ota.download";
     "logs.write": "logs.write";
+    console: "console";
 }>;
 /** Caps minted when the fleet does not configure `default_caps`. */
 export declare const DEFAULT_DEVICE_CAPS: DeviceCap[];
@@ -48,6 +49,7 @@ export declare const DeviceTokenClaimsSchema: z.ZodObject<{
         "telemetry.write": "telemetry.write";
         "ota.download": "ota.download";
         "logs.write": "logs.write";
+        console: "console";
     }>>;
     jti: z.ZodString;
     iat: z.ZodNumber;

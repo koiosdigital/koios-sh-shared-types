@@ -25,6 +25,11 @@ export declare const PERMISSIONS: readonly [{
     readonly action: "delete";
     readonly description: "Delete IoT devices";
 }, {
+    readonly id: "iot.console";
+    readonly resource: "iot";
+    readonly action: "console";
+    readonly description: "Open a console session to a device";
+}, {
     readonly id: "firmware.read";
     readonly resource: "firmware";
     readonly action: "read";

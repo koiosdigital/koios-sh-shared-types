@@ -19,6 +19,12 @@ export const PERMISSIONS = [
     description: 'Provision and update IoT devices',
   },
   { id: 'iot.delete', resource: 'iot', action: 'delete', description: 'Delete IoT devices' },
+  {
+    id: 'iot.console',
+    resource: 'iot',
+    action: 'console',
+    description: 'Open a console session to a device',
+  },
   { id: 'firmware.read', resource: 'firmware', action: 'read', description: 'View firmware' },
   {
     id: 'firmware.write',
